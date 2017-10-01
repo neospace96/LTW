@@ -52,6 +52,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -197,6 +198,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\dbQLQuanAo.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbQLQuanAo.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -216,6 +222,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images\404_bg.jpg" />
+    <Content Include="images\57D26D1505326_A.jpg" />
     <Content Include="images\about_img1.jpg" />
     <Content Include="images\active_step.jpg" />
     <Content Include="images\articles\1.jpg" />
@@ -272,6 +279,12 @@
     <Content Include="images\foot_logo.png" />
     <Content Include="images\frame_angle.jpg" />
     <Content Include="images\free_price.png" />
+    <Content Include="images\hinhsanpham\57J21T55001L_A.jpg" />
+    <Content Include="images\hinhsanpham\57J21T55001L_B.jpg" />
+    <Content Include="images\hinhsanpham\61C22A42062XS_A.jpg" />
+    <Content Include="images\hinhsanpham\61C22A42062XS_B.jpg" />
+    <Content Include="images\hinhsanpham\61V20A75042S_1.jpg" />
+    <Content Include="images\hinhsanpham\61V20A75042S_2.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\master_card.jpg" />
     <Content Include="images\my_account_bg.jpg" />
@@ -527,9 +540,20 @@
     <Content Include="images\tovar\Thumbs.db" />
     <Content Include="images\tovar\women\new\Thumbs.db" />
     <Content Include="images\tovar\women\Thumbs.db" />
+    <Content Include="Models\dbQLQuanAo.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbQLQuanAo.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\dbQLQuanAo.dbml.layout">
+      <DependentUpon>dbQLQuanAo.dbml</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutUser.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
