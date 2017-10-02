@@ -46,5 +46,11 @@ namespace SadiShop.Controllers
             return PartialView(loai);
         }
 
+        public ActionResult HienThiSanPhamTheoLoai(string id)
+        {
+            var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
+            return View(sanpham);
+        }
+
     }
 }

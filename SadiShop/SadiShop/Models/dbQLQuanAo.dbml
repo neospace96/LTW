@@ -51,9 +51,9 @@
   </Table>
   <Table Name="dbo.LoaiSanPham" Member="LoaiSanPhams">
     <Type Name="LoaiSanPham">
-      <Column Name="MaLoai" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaLoai" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenLoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MaLoaiCha" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="MaLoaiCha" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="LoaiSanPham_SanPham" Member="SanPhams" ThisKey="MaLoai" OtherKey="MaLoai" Type="SanPham" />
     </Type>
   </Table>
@@ -77,7 +77,7 @@
       <Column Name="MaSanPham" Type="System.String" DbType="NChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenSanPham" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="MaNhaSanXuat" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="MaLoai" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="MaLoai" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="ChatLieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="GiaBan" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Hinh1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
