@@ -52,5 +52,17 @@ namespace SadiShop.Controllers
             return View(sanpham);
         }
 
+        public ActionResult ChiTiet(string id)
+        {
+            var sanpham = from sp in data.SanPhams where sp.MaSanPham == id select sp;
+            return View(sanpham);
+        }
+
+        public ActionResult XuHuongMoi()
+        {
+            var sanpham = from sp in data.SanPhams orderby sp.MaSanPham ascending select sp;
+            return PartialView(sanpham);
+        }
+
     }
 }
