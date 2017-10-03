@@ -64,5 +64,14 @@ namespace SadiShop.Controllers
             return PartialView(sanpham);
         }
 
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult LienHe()
+        {
+            return View();
+        }
     }
 }

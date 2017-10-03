@@ -191,8 +191,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,6 +205,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbQLQuanAo.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -776,6 +779,7 @@
     <Content Include="images\paypal.jpg" />
     <Content Include="images\preloader.gif" />
     <Content Include="images\premium_post.jpg" />
+    <Content Include="images\register_bacckground.jpg" />
     <Content Include="images\school_sale.jpg" />
     <Content Include="images\shoes_page.jpg" />
     <Content Include="images\skrill.jpg" />
@@ -792,10 +796,10 @@
     <Content Include="images\slider\woman_bg2.jpg" />
     <Content Include="images\slider\woman_bg3.jpg" />
     <Content Include="images\standart_post.jpg" />
-    <Content Include="images\team\1.jpg" />
-    <Content Include="images\team\2.jpg" />
-    <Content Include="images\team\3.jpg" />
-    <Content Include="images\team\4.jpg" />
+    <Content Include="images\team\1.png" />
+    <Content Include="images\team\2.png" />
+    <Content Include="images\team\3.png" />
+    <Content Include="images\team\4.png" />
     <Content Include="images\top_sale.jpg" />
     <Content Include="images\tovar\banner1.jpg" />
     <Content Include="images\tovar\banner10.jpg" />
@@ -1041,6 +1045,11 @@
     <Content Include="Views\Shop\HienThiSanPhamTheoLoai.cshtml" />
     <Content Include="Views\Shop\ChiTiet.cshtml" />
     <Content Include="Views\Shop\XuHuongMoi.cshtml" />
+    <Content Include="Views\NguoiDung\DangKy.cshtml" />
+    <Content Include="Views\NguoiDung\DangNhap.cshtml" />
+    <Content Include="Views\GioHang\GioHang.cshtml" />
+    <Content Include="Views\Shop\About.cshtml" />
+    <Content Include="Views\Shop\LienHe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
