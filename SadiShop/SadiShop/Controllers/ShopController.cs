@@ -51,11 +51,11 @@ namespace SadiShop.Controllers
             var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
             return View(sanpham);
         }
-
+        //HIỂN THỊ CHI TIẾT
         public ActionResult ChiTiet(string id)
         {
             var sanpham = from sp in data.SanPhams where sp.MaSanPham == id select sp;
-            return View(sanpham);
+            return View(sanpham.Single());
         }
 
         public ActionResult XuHuongMoi()

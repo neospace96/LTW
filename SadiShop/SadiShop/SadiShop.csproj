@@ -1043,13 +1043,14 @@
     <Content Include="Views\Shop\LoaisanphamNu.cshtml" />
     <Content Include="Views\Shop\LoaisanphamNam.cshtml" />
     <Content Include="Views\Shop\HienThiSanPhamTheoLoai.cshtml" />
-    <Content Include="Views\Shop\ChiTiet.cshtml" />
     <Content Include="Views\Shop\XuHuongMoi.cshtml" />
     <Content Include="Views\NguoiDung\DangKy.cshtml" />
     <Content Include="Views\NguoiDung\DangNhap.cshtml" />
     <Content Include="Views\GioHang\GioHang.cshtml" />
     <Content Include="Views\Shop\About.cshtml" />
     <Content Include="Views\Shop\LienHe.cshtml" />
+    <Content Include="Views\Shop\ChiTiet.cshtml" />
+    <Content Include="Views\Shop\XemNhanh.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

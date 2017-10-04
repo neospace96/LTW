@@ -13,25 +13,31 @@
         <div class="my_account_block clearfix">
             <div class="login">
                 <h2>TÔI ĐÃ CÓ TÀI KHOẢN</h2>
-                <form class="login_form" action="javascript:void(0);" method="get">
-                    <input type="text" name="username" value="Tên đăng nhập" onFocus="if (this.value == 'Tên đăng nhập') this.value = '';" onBlur="if (this.value == '') this.value = 'Tên đăng nhập';" />
-                    <input class="last" type="text" name="password" value="Mật khẩu" onFocus="if (this.value == 'Mật khẩu') this.value = '';" onBlur="if (this.value == '') this.value = 'Mật khẩu';" />
-                    <div class="clearfix">
-                        <div class="pull-left"><input type="checkbox" id="categorymanufacturer1" /><label for="categorymanufacturer1">Nhớ đăng nhập</label></div>
-                        <div class="pull-right"><a class="forgot_pass" href="javascript:void(0);">Quên mật khẩu?</a></div>
-                    </div>
-                    <div class="center"><input type="submit" value="Đăng nhập"></div>
-                </form>
+                <div class="login_form">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true)
+                        @ViewData["Error1"]
+                        @Html.TextBox("username", "", new { placeholder = "Tên đăng nhập" })
+                        @ViewData["Error2"]
+                        @Html.TextBox("password", "", new { placeholder = "Mật khẩu" })
+                        <div class="clearfix">
+                            <div class="pull-left"><input type="checkbox" id="categorymanufacturer1" /><label for="categorymanufacturer1">Nhớ đăng nhập</label></div>
+                            <div class="pull-right"><a class="forgot_pass" href="javascript:void(0);">Quên mật khẩu?</a></div>
+                        </div>
+                        <h4 style="color:red">@ViewBag.Thongbao</h4>
+                        <div class="center"><input type="submit" value="Đăng nhập"></div>
+                    }  
+                </div>
             </div>
             <div class="new_customers">
                 <h2>KHÁCH HÀNG MỚI</h2>
-                <p>Đăng ký tài khoản bạn sẽ nhận được những lợi ích sau:</p>
+                <h3>Đăng ký tài khoản bạn sẽ nhận được những lợi ích sau:</h3>
                 <ul>
-                    <li><a href="javascript:void(0);">—  Mua sắm dễ dàng hơn</a></li>
-                    <li><a href="javascript:void(0);">—  Thanh toán nhanh chóng và dễ dàng</a></li>
-                    <li><a href="javascript:void(0);">—  Hưởng được nhiều ưu đãi hấp dẫn</a></li>
-                    <li><a href="javascript:void(0);">—  Thuận tiện kiểm tra đơn hàng</a></li>
-                    <li><a href="javascript:void(0);">—  Sử dụng dịch vụ một cách tốt nhất</a></li>
+                    <li><h4>—  Mua sắm dễ dàng hơn</h4></li>
+                    <li><h4>—  Thanh toán nhanh chóng và dễ dàng</h4></li>
+                    <li><h4>—  Hưởng được nhiều ưu đãi hấp dẫn</h4></li>
+                    <li><h4>—  Sử dụng dịch vụ một cách tốt nhất</h4></li>
                 </ul>
                 <div class="center"><a class="btn active" href="~/NguoiDung/DangKy">Đăng ký tài khoản mới</a></div>
             </div>

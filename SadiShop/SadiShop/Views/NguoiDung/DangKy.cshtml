@@ -13,24 +13,27 @@
         <div class=" clearfix">
             <div class="login" style="background-color: #fff; margin-bottom: 54px;margin-left: 200px;margin-right: 200px;">
                 <h2 style="text-align: center;padding-top: 20px;">ĐĂNG KÝ TÀI KHOẢN</h2>
-                <form class="login_form" action="javascript:void(0);" method="get" style=" width: 50%; margin: auto;padding-bottom: 20px;">
-                    @*<input type="text" name="email" value="Email" onFocus="if (this.value == 'Email') this.value = '';" onBlur="if (this.value == '') this.value = 'Email';" />
-                    @ViewData["Loi1"]
-                    <input type="text" name="username" value="Tên đăng nhập" onFocus="if (this.value == 'Tên đăng nhập') this.value = '';" onBlur="if (this.value == '') this.value = 'Tên đăng nhập';" />
-                    @ViewData["Loi2"]
-                    <input class="last" type="text" name="password" value="Mật khẩu" onFocus="if (this.value == 'Mật khẩu') this.value = '';" onBlur="if (this.value == '') this.value = 'Mật khẩu';" />
-                    <input class="last" type="text" name="repassword" value="Nhập lại mật khẩu" onFocus="if (this.value == 'Nhập lại mật khẩu') this.value = '';" onBlur="if (this.value == '') this.value = 'Nhập lại mật khẩu';" />
-                    <input type="text" name="fullname" value="Họ và tên" onFocus="if (this.value == 'Họ và tên') this.value = '';" onBlur="if (this.value == '') this.value = 'Họ và tên';" />
-                    <input type="text" name="telephone" value="Số điện thoại" onFocus="if (this.value == 'Số điện thoại') this.value = '';" onBlur="if (this.value == '') this.value = 'Số điện thoại';" />
-                    <div class="center"><input  type="submit" value="Đăng ký"></div>*@
+                <div class="login_form" action="javascript:void(0);"  style=" width: 50%; margin: auto;padding-bottom: 20px;">
                     @using (Html.BeginForm())
                     {
                         @Html.ValidationSummary(true)
-                        @Html.TextBox("email")
-                        @Html.TextBox("username")
-                        <input type="submit" value="DDK"/>
-                    }
-                </form>
+                        @ViewData["Error1"]
+                        @Html.TextBox("username", "", new { placeholder = "Tên đăng nhập" })
+                        @ViewData["Error2"]
+                        @Html.TextBox("password", "", new { placeholder = "Mật khẩu" })
+                        @ViewData["Error3"]
+                        @Html.TextBox("repassword", "", new { placeholder = "Nhập lại mật khẩu" })
+                        @ViewData["Error4"]
+                        @Html.TextBox("fullname", "", new { placeholder = "Họ và tên" })
+                        @ViewData["Error5"]
+                        @Html.TextBox("email", "", new { placeholder = "Email" })
+                        @ViewData["Error6"]
+                        @Html.TextBox("telephone", "", new { placeholder = "Số điện thoại" })
+                        <div class="center"><input type="submit" value="Đăng ký" /></div>
+
+                     }
+                </div>   
+
             </div>
             
         </div>

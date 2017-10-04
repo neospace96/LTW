@@ -13,13 +13,11 @@
   </Table>
   <Table Name="dbo.TaiKhoan" Member="TaiKhoans">
     <Type Name="TaiKhoan">
-      <Column Name="MaTaiKhoan" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaTaiKhoan" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="HoTen" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="GioiTinh" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="DienThoai" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-      <Column Name="NgaySinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="TaiKhoan_DonDatHang" Member="DonDatHangs" ThisKey="MaTaiKhoan" OtherKey="MaTaiKhoan" Type="DonDatHang" />
     </Type>
@@ -39,7 +37,7 @@
   <Table Name="dbo.DonDatHang" Member="DonDatHangs">
     <Type Name="DonDatHang">
       <Column Name="MaDonDatHang" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaTaiKhoan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaTaiKhoan" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NgayDatHang" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="TenNguoiNhan" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />

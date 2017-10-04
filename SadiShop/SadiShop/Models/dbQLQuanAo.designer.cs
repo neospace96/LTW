@@ -420,7 +420,7 @@ namespace SadiShop.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _MaTaiKhoan;
+		private int _MaTaiKhoan;
 		
 		private string _Username;
 		
@@ -428,11 +428,7 @@ namespace SadiShop.Models
 		
 		private string _HoTen;
 		
-		private System.Nullable<bool> _GioiTinh;
-		
 		private string _DienThoai;
-		
-		private System.Nullable<System.DateTime> _NgaySinh;
 		
 		private string _Email;
 		
@@ -442,7 +438,7 @@ namespace SadiShop.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaTaiKhoanChanging(string value);
+    partial void OnMaTaiKhoanChanging(int value);
     partial void OnMaTaiKhoanChanged();
     partial void OnUsernameChanging(string value);
     partial void OnUsernameChanged();
@@ -450,12 +446,8 @@ namespace SadiShop.Models
     partial void OnPasswordChanged();
     partial void OnHoTenChanging(string value);
     partial void OnHoTenChanged();
-    partial void OnGioiTinhChanging(System.Nullable<bool> value);
-    partial void OnGioiTinhChanged();
     partial void OnDienThoaiChanging(string value);
     partial void OnDienThoaiChanged();
-    partial void OnNgaySinhChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgaySinhChanged();
     partial void OnEmailChanging(string value);
     partial void OnEmailChanged();
     #endregion
@@ -466,8 +458,8 @@ namespace SadiShop.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTaiKhoan", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaTaiKhoan
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTaiKhoan", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MaTaiKhoan
 		{
 			get
 			{
@@ -546,26 +538,6 @@ namespace SadiShop.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GioiTinh", DbType="Bit")]
-		public System.Nullable<bool> GioiTinh
-		{
-			get
-			{
-				return this._GioiTinh;
-			}
-			set
-			{
-				if ((this._GioiTinh != value))
-				{
-					this.OnGioiTinhChanging(value);
-					this.SendPropertyChanging();
-					this._GioiTinh = value;
-					this.SendPropertyChanged("GioiTinh");
-					this.OnGioiTinhChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DienThoai", DbType="VarChar(15)")]
 		public string DienThoai
 		{
@@ -582,26 +554,6 @@ namespace SadiShop.Models
 					this._DienThoai = value;
 					this.SendPropertyChanged("DienThoai");
 					this.OnDienThoaiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgaySinh", DbType="Date")]
-		public System.Nullable<System.DateTime> NgaySinh
-		{
-			get
-			{
-				return this._NgaySinh;
-			}
-			set
-			{
-				if ((this._NgaySinh != value))
-				{
-					this.OnNgaySinhChanging(value);
-					this.SendPropertyChanging();
-					this._NgaySinh = value;
-					this.SendPropertyChanged("NgaySinh");
-					this.OnNgaySinhChanged();
 				}
 			}
 		}
@@ -965,7 +917,7 @@ namespace SadiShop.Models
 		
 		private string _MaDonDatHang;
 		
-		private string _MaTaiKhoan;
+		private System.Nullable<int> _MaTaiKhoan;
 		
 		private System.Nullable<System.DateTime> _NgayDatHang;
 		
@@ -987,7 +939,7 @@ namespace SadiShop.Models
     partial void OnCreated();
     partial void OnMaDonDatHangChanging(string value);
     partial void OnMaDonDatHangChanged();
-    partial void OnMaTaiKhoanChanging(string value);
+    partial void OnMaTaiKhoanChanging(System.Nullable<int> value);
     partial void OnMaTaiKhoanChanged();
     partial void OnNgayDatHangChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayDatHangChanged();
@@ -1028,8 +980,8 @@ namespace SadiShop.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTaiKhoan", DbType="VarChar(50)")]
-		public string MaTaiKhoan
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTaiKhoan", DbType="Int")]
+		public System.Nullable<int> MaTaiKhoan
 		{
 			get
 			{
@@ -1192,7 +1144,7 @@ namespace SadiShop.Models
 					}
 					else
 					{
-						this._MaTaiKhoan = default(string);
+						this._MaTaiKhoan = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("TaiKhoan");
 				}

@@ -8,24 +8,25 @@
 		<div class="tovar_view_fotos clearfix">
 			<div id="slider1" class="flexslider">
 				<ul class="slides">
-					<li><a href="javascript:void(0);" ><img src="images/tovar/men/1.jpg" alt="" /></a></li>
-					<li><a href="javascript:void(0);" ><img src="images/tovar/men/1_2.jpg" alt="" /></a></li>
-					<li><a href="javascript:void(0);" ><img src="images/tovar/men/1_3.jpg" alt="" /></a></li>
-					<li><a href="javascript:void(0);" ><img src="images/tovar/men/1_4.jpg" alt="" /></a></li>
+					<li><a href="javascript:void(0);" ><img src="~/images/hinhsanpham/" alt="" /></a></li>
+					<li><a href="javascript:void(0);" ><img src="~/images/hinhsanpham/1_2.jpg" alt="" /></a></li>
+					<li><a href="javascript:void(0);" ><img src="~/images/hinhsanpham/1_3.jpg" alt="" /></a></li>
+					<li><a href="javascript:void(0);" ><img src="~/images/hinhsanpham/1_4.jpg" alt="" /></a></li>
 				</ul>
 			</div>
 			<div id="carousel1" class="flexslider">
 				<ul class="slides">
-					<li><a href="javascript:void(0);" ><img src="images/tovar/men/1.jpg" alt="" /></a></li>
-					<li><a href="javascript:void(0);" ><img src="images/tovar/men/1_2.jpg" alt="" /></a></li>
-					<li><a href="javascript:void(0);" ><img src="images/tovar/men/1_3.jpg" alt="" /></a></li>
-					<li><a href="javascript:void(0);" ><img src="images/tovar/men/1_4.jpg" alt="" /></a></li>
+					<li><a href="javascript:void(0);" ><img src="~/images/hinhsanpham/1.jpg" alt="" /></a></li>
+					<li><a href="javascript:void(0);" ><img src="~/images/hinhsanpham/1_2.jpg" alt="" /></a></li>
+					<li><a href="javascript:void(0);" ><img src="~/images/hinhsanpham/1_3.jpg" alt="" /></a></li>
+					<li><a href="javascript:void(0);" ><img src="~/images/hinhsanpham/1_4.jpg" alt="" /></a></li>
 				</ul>
 			</div>
 		</div>
-		
+        @Url.Action("ChiTiet", "Shop", new {id = sanpham.MaSanPham})
+        
 		<div class="tovar_view_description">
-			<div class="tovar_view_title">Popover Sweatshirt in Floral Jacquard</div>
+			<div class="tovar_view_title"></div>
 			<div class="tovar_article">88-305-676</div>
 			<div class="clearfix tovar_brend_price">
 				<div class="pull-left tovar_brend">Calvin Klein</div>
