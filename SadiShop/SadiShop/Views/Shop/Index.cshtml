@@ -19,7 +19,7 @@
                                 <p class="title1 captionDelay2 FromTop">Giảm 50%</p>
                                 <p class="title2 captionDelay3 FromTop">Tuần lễ khuyến mãi</p>
                             </div>
-                            <a class="flex_caption2" href="javascript:void(0);"><div class="middle">Thỏa<span>sức</span>mua</div></a>
+                            <a class="flex_caption2" href="~/Shop/Sale"><div class="middle">Thỏa<span>sức</span>mua</div></a>
                             <div class="flex_caption3 slide_banner_wrapper">
                                 <a class="slide_banner slide1_banner1 captionDelay4 FromBottom" href="javascript:void(0);"><img src="~/images/slider/slide1_baner1.jpg" alt="" /></a>
                                 <a class="slide_banner slide1_banner2 captionDelay5 FromBottom" href="javascript:void(0);"><img src="~/images/slider/slide1_baner2.jpg" alt="" /></a>
@@ -36,7 +36,7 @@
                                 <p class="title1 captionDelay2 FromTop">Giảm 50%</p>
                                 <p class="title2 captionDelay3 FromTop">Tuần lễ khuyến mãi</p>
                             </div>
-                            <a class="flex_caption2" href="javascript:void(0);"><div class="middle">Thỏa<span>sức</span>mua</div></a>
+                            <a class="flex_caption2" href="~/Shop/Sale"><div class="middle">Thỏa<span>sức</span>mua</div></a>
                             <div class="flex_caption3 slide_banner_wrapper">
                                 <a class="slide_banner slide1_banner1 captionDelay4 FromBottom" href="javascript:void(0);"><img src="~/images/slider/slide1_baner1.jpg" alt="" /></a>
                                 <a class="slide_banner slide1_banner3 captionDelay5 FromBottom" href="javascript:void(0);"><img src="~/images/slider/slide1_baner3.jpg" alt="" /></a>
@@ -53,7 +53,7 @@
                                 <p class="title1 captionDelay2 FromTop">Giảm 50%</p>
                                 <p class="title2 captionDelay3 FromTop">Tuần lễ khuyến mãi</p>
                             </div>
-                            <a class="flex_caption2" href="javascript:void(0);"><div class="middle">Thỏa<span>sức</span>mua</div></a>
+                            <a class="flex_caption2" href="~/Shop/Sale"><div class="middle">Thỏa<span>sức</span>mua</div></a>
                             <div class="flex_caption3 slide_banner_wrapper">
                                 <a class="slide_banner slide1_banner3 captionDelay4 FromBottom" href="javascript:void(0);"><img src="~/images/slider/slide1_baner3.jpg" alt="" /></a>
                                 <a class="slide_banner slide1_banner1 captionDelay5 FromBottom" href="javascript:void(0);"><img src="~/images/slider/slide1_baner1.jpg" alt="" /></a>
@@ -70,60 +70,15 @@
             <!-- CONTAINER -->
             <div class="container">
                 <h2>Sản phẩm đặc sắc</h2>
-
                 <!-- ROW -->
                 <div class="row">
-
                     <!-- TOVAR WRAPPER -->
                     <div class="tovar_wrapper" data-appear-top-offset='-100' data-animated='fadeInUp'>
-
-                    @foreach (var sanpham in Model)
-                    {
-                        <!-- TOVAR1 -->
-                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 col-ss-12 padbot40">
-                            <div class="tovar_item">
-                                <div class="tovar_img">
-                                    <div class="tovar_img_wrapper">
-                                        <img class="img" src="~/images/hinhsanpham/@sanpham.Hinh1" alt="" />
-                                        <img class="img_h" src="~/images/hinhsanpham/@sanpham.Hinh2" alt="" />
-                                    </div>
-                                    <div class="tovar_item_btns">
-                                        <div class="open-project-link"><a class="open-project tovar_view" href="~/Shop/XemNhanh" data-url="@Url.Action("ChiTiet", "Shop", new { id = sanpham.MaSanPham });">chi tiết</a></div>
-                                        <a class="add_bag" href="@Url.Action("GioHang", "GioHang", new {})"><i class="fa fa-shopping-cart"></i></a>
-                                        <a class="add_lovelist" href="javascript:void(0);"><i class="fa fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="tovar_description clearfix">
-                                    <a class="tovar_title" href="product-page.html">@sanpham.TenSanPham</a>
-                                    <span class="tovar_price">@String.Format("{0:0,0}", sanpham.GiaBan) VNĐ</span>
-                                </div>
-                            </div>
-                        </div><!-- //TOVAR1 -->
-                    }
-
-
-                        <div class="respond_clear_768"></div>
-
-                        <!-- BANNER -->
-                        <div class="col-lg-3 col-md-3 col-xs-6 col-ss-12">
-                            <a class="banner type1 margbot30" href="javascript:void(0);"><img src="~/images/tovar/banner1.jpg" alt="" /></a>
-                            <a class="banner type2 margbot40" href="javascript:void(0);"><img src="~/images/tovar/banner2.jpg" alt="" /></a>
-                        </div><!-- //BANNER -->
-                    </div><!-- //TOVAR WRAPPER -->
-                </div><!-- //ROW -->
-                <!-- ROW -->
-                <div class="row">
-
-                    <!-- TOVAR WRAPPER -->
-                    <div class="tovar_wrapper" data-appear-top-offset='-100' data-animated='fadeInUp'>
-
                         <!-- BANNER -->
                         <div class="col-lg-3 col-md-3 col-xs-6 col-ss-12">
                             <a class="banner type3 margbot40" href="javascript:void(0);"><img src="~/images/tovar/banner3.jpg" alt="" /></a>
                         </div><!-- //BANNER -->
-
                         <div class="respond_clear_768"></div>
-
                         @foreach (var sanpham in Model)
                         {
                         <!-- TOVAR4 -->
@@ -135,7 +90,7 @@
                                             <img class="img_h" src="~/images/hinhsanpham/@sanpham.Hinh2" alt="" />
                                         </div>
                                         <div class="tovar_item_btns">
-                                            <div class="open-project-link"><a class="open-project tovar_view" href="javascript:void(0);" data-url="~/!projects/women/1.html">chi tiết</a></div>
+                                            <div class="open-project-link"><a class="open-project tovar_view" href="" data-url="~/Shop/XemNhanh">xem nhanh</a></div>
                                             <a class="add_bag" href="javascript:void(0);"><i class="fa fa-shopping-cart"></i></a>
                                             <a class="add_lovelist" href="javascript:void(0);"><i class="fa fa-heart"></i></a>
                                         </div>
@@ -148,6 +103,12 @@
                             </div><!-- //TOVAR4 -->
                         }
                     </div><!-- //TOVAR WRAPPER -->
+                    <div class="respond_clear_768"></div>
+                    <!-- BANNER -->
+                    <div class="col-lg-3 col-md-3 col-xs-6 col-ss-12">
+                        <a class="banner type1 margbot30" href="javascript:void(0);"><img src="~/images/tovar/banner1.jpg" alt="" /></a>
+                        <a class="banner type2 margbot40" href="javascript:void(0);"><img src="~/images/tovar/banner2.jpg" alt="" /></a>
+                    </div><!-- //BANNER -->
                 </div><!-- //ROW -->
                 <!-- ROW -->
                 <div class="row">

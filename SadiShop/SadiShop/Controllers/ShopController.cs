@@ -18,7 +18,7 @@ namespace SadiShop.Controllers
         // GET: Shop
         public ActionResult Index()
         {
-            var sanphammoi = Laysanphammoi(3);
+            var sanphammoi = Laysanphammoi(6);
             return View(sanphammoi);
         }
 
@@ -62,6 +62,17 @@ namespace SadiShop.Controllers
         {
             var sanpham = from sp in data.SanPhams orderby sp.MaSanPham ascending select sp;
             return PartialView(sanpham);
+        }
+
+        private List<SanPham> SanPhamSale(int count)
+        {
+            return data.SanPhams.OrderByDescending(a => a.GiaBan).Take(count).ToList();
+        }
+
+        public ActionResult Sale()
+        {
+            var sanphamsale = SanPhamSale(10);
+            return View(sanphamsale);
         }
 
         public ActionResult About()

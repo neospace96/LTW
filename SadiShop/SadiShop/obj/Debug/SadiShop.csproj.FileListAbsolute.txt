@@ -94,4 +94,3 @@ F:\LTW\SadiShop\SadiShop\bin\Microsoft.AI.Web.xml
 F:\LTW\SadiShop\SadiShop\obj\Debug\SadiShop.csproj.CoreCompileInputs.cache
 F:\LTW\SadiShop\SadiShop\obj\Debug\SadiShop.dll
 F:\LTW\SadiShop\SadiShop\obj\Debug\SadiShop.pdb
-F:\LTW\SadiShop\SadiShop\obj\Debug\SadiShop.csprojResolveAssemblyReference.cache

@@ -90,8 +90,10 @@ namespace SadiShop.Controllers
                 TaiKhoan tk = data.TaiKhoans.SingleOrDefault(n => n.Username == tendn && n.Password == matkhau);
                 if (tk != null)
                 {
-                    ViewBag.Thongbao = "Chúc mừng đăng nhập thành công";
                     Session["TaiKhoan"] = tk;
+                    Session["Ten"] = tk.HoTen;
+                    return RedirectToAction("Index", "Shop");
+                    
                 }
                 else
                     ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng";

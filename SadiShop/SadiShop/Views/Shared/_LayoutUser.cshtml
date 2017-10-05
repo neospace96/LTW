@@ -31,10 +31,21 @@
 
                         <!-- CONTAINER -->
                         <div class="container clearfix">
-                            <ul class="secondary_menu">
+                        <ul class="secondary_menu">
+                            @if (Session["TaiKhoan"] != null)
+                            {
+                                
+                                <li><a href="@Url.Action("LogOut","NguoiDung")"><i class="fa fa-user-circle" aria-hidden="true">Xin Chào, @Session["Ten"].ToString()</i></a></li>
+                                <li><a href="@Url.Action("LogOut","NguoiDung")"><i class="fa fa-user-circle" aria-hidden="true"></i>Đăng xuất</a></li>
+                            }
+                            @if (Session["TaiKhoan"] == null)
+                            {
                                 <li><a href="~/NguoiDung/DangNhap">TÀI KHOẢN CỦA TÔI</a></li>
                                 <li><a href="~/NguoiDung/DangKy">ĐĂNG KÝ</a></li>
-                            </ul>
+
+                            }
+                        </ul>
+
 
                             <div class="live_chat"><a href="javascript:void(0);"><i class="fa fa-comment-o"></i> Hỗ trợ trực tuyến</a></div>
 
@@ -173,7 +184,7 @@
                                         </li>
                                     </ul><!-- //MEGA MENU -->
                                 </li>
-                                <li class="last sale_menu"><a href="sale.html">Khuyến mãi</a></li>
+                                <li class="last sale_menu"><a href="~/Shop/Sale">Khuyến mãi</a></li>
                             </ul><!-- //MENU -->
                         </div><!-- //MENU BLOCK -->
                     </div><!-- //CONTAINER -->

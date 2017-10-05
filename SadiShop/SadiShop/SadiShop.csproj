@@ -191,8 +191,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -212,28 +212,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="!projects\men\1.html" />
-    <Content Include="!projects\men\2.html" />
-    <Content Include="!projects\men\3.html" />
-    <Content Include="!projects\men\4.html" />
-    <Content Include="!projects\men\5.html" />
-    <Content Include="!projects\men\6.html" />
-    <Content Include="!projects\men\7.html" />
-    <Content Include="!projects\men\8.html" />
-    <Content Include="!projects\men\9.html" />
-    <Content Include="!projects\shoes\1.html" />
-    <Content Include="!projects\shoes\2.html" />
-    <Content Include="!projects\shoes\3.html" />
-    <Content Include="!projects\shoes\4.html" />
-    <Content Include="!projects\women\1.html" />
-    <Content Include="!projects\women\2.html" />
-    <Content Include="!projects\women\3.html" />
-    <Content Include="!projects\women\4.html" />
-    <Content Include="!projects\women\5.html" />
-    <Content Include="!projects\women\6.html" />
-    <Content Include="!projects\women\7.html" />
-    <Content Include="!projects\women\8.html" />
-    <Content Include="!projects\women\9.html" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fancySelect.css" />
@@ -980,11 +958,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -1003,8 +976,6 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1050,7 +1021,8 @@
     <Content Include="Views\Shop\About.cshtml" />
     <Content Include="Views\Shop\LienHe.cshtml" />
     <Content Include="Views\Shop\ChiTiet.cshtml" />
-    <Content Include="Views\Shop\XemNhanh.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Shop\Sale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
