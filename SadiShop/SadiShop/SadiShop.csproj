@@ -1023,6 +1023,8 @@
     <Content Include="Views\Shop\ChiTiet.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Shop\Sale.cshtml" />
+    <Content Include="Views\GioHang\GioHangPartial.cshtml" />
+    <Content Include="Views\Shop\ViewDetailProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

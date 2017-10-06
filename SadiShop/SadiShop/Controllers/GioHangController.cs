@@ -25,7 +25,7 @@ namespace SadiShop.Controllers
         {
             return View();
         }
-
+        //THEM GIO HANG
         public ActionResult ThemGioHang(string sMaSanPham, string strURL)
         {
             List<GioHang> lstGiohang = LayGioHang();
@@ -42,7 +42,7 @@ namespace SadiShop.Controllers
                 return Redirect(strURL);
             }
         }
-
+        //TINH SO LUONG
         private int TongSoLuong()
         {
             int iTongSoLuong = 0;
@@ -53,7 +53,7 @@ namespace SadiShop.Controllers
             }
             return iTongSoLuong;
         }
-
+        //TONG TIEN
         private double TongTien()
         {
             double iTongTien = 0;
@@ -64,7 +64,7 @@ namespace SadiShop.Controllers
             }
             return iTongTien;
         }
-
+        //GIO HANG
         public ActionResult GioHang()
         {
             List<GioHang> lstGiohang = LayGioHang();
@@ -75,6 +75,43 @@ namespace SadiShop.Controllers
             ViewBag.Tongsoluong = TongSoLuong();
             ViewBag.Tongtien = TongTien();
             return View(lstGiohang);
+        }
+        //GIO HANG MENU
+        public ActionResult GioHangPartial()
+        {
+            List<GioHang> lstGiohang = LayGioHang();
+            ViewBag.Tongsoluong = TongSoLuong();
+            ViewBag.Tongtien = TongTien();
+            return PartialView(lstGiohang);
+        }
+
+        //XOA SAN PHAM
+        public ActionResult XoaGioHang(string sMaSP)
+        {
+            List<GioHang> lstGioHang = LayGioHang();
+            GioHang sanpham = lstGioHang.SingleOrDefault(n => n.sMaSanPham == sMaSP);
+            if(sanpham != null)
+            {
+                lstGioHang.RemoveAll(n => n.sMaSanPham == sMaSP);
+                return RedirectToAction("GioHang");
+            }
+            if(lstGioHang.Count == 0)
+            {
+                return RedirectToAction("Index", "Shop");
+            }
+            return RedirectToAction("GioHang");
+        }
+
+        //CAP NHAT LAI GIO HANG
+        public ActionResult CapNhatGioHang (string sMaSP, FormCollection f)
+        {
+            List<GioHang> lstGioHang = LayGioHang();
+            GioHang sanpham = lstGioHang.SingleOrDefault(n => n.sMaSanPham == sMaSP);
+            if(sanpham != null)
+            {
+                sanpham.iSoLuong = int.Parse(f["txtSoLuong"].ToString());
+            }
+            return RedirectToAction("GioHang");
         }
     }
 }

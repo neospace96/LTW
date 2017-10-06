@@ -15,6 +15,21 @@ namespace SadiShop.Controllers
             return data.SanPhams.OrderByDescending(a => a.MaSanPham).Take(count).ToList();
         }
 
+        public ActionResult ViewDetailProduct(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return View();//??
+            }
+            var sanpham = (from sp
+                           in data.SanPhams
+                           where sp.MaSanPham == id
+                           select sp
+                           ).SingleOrDefault();
+            return PartialView("ViewDetailProduct", sanpham);
+        }
+
+
         // GET: Shop
         public ActionResult Index()
         {
