@@ -91,7 +91,7 @@
                                         </div>
                                         <div class="tovar_item_btns">
                                             <div class="open-project-link"><a class="open-project tovar_view" href="" data-url="~/Shop/XemNhanh">xem nhanh</a></div>
-                                            <a class="add_bag" href="javascript:void(0);"><i class="fa fa-shopping-cart"></i></a>
+                                            <a class="add_bag" href="@Url.Action("ThemGioHang","GioHang", new { @sMaSanPham = @sanpham.MaSanPham, strURL= Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i></a>
                                             <a class="add_lovelist" href="javascript:void(0);"><i class="fa fa-heart"></i></a>
                                         </div>
                                     </div>
