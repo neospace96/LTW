@@ -50,15 +50,7 @@
                 <a class="sizeXXXL" href="javascript:void(0);">XXXL</a>
             </div>
             <div class="tovar_view_btn">
-                <select class="basic">
-                    <option value="">QTY</option>
-                    <option>Lo</option>
-                    <option>Ips</option>
-                    <option>Dol</option>
-                    <option>Sit</option>
-                    <option>Amet</option>
-                </select>
-                <a class="add_bag" href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>Add to bag</a>
+                <a class="add_bag" href="@Url.Action("ThemGioHang","GioHang", new { @sMaSanPham = @Model.MaSanPham, strURL= Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                 <a class="add_lovelist" href="javascript:void(0);"><i class="fa fa-heart"></i></a>
             </div>
             <div class="tovar_shared clearfix">

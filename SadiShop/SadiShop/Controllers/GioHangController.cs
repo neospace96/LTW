@@ -113,5 +113,13 @@ namespace SadiShop.Controllers
             }
             return RedirectToAction("GioHang");
         }
+
+        //XOA TAT CA TRONG GIO HANG
+        public ActionResult XoaTatCaGioHang()
+        {
+            List<GioHang> lstGioHang = LayGioHang();
+            lstGioHang.Clear();
+            return RedirectToAction("Index", "Shop");
+        }
     }
 }

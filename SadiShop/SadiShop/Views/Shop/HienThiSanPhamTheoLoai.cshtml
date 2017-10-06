@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "HienThiSanPhamAoCanhNu";
+    ViewBag.Title = "Sản Phẩm Theo Loại - Sadi Shop";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
@@ -73,8 +73,7 @@
 
                             <!-- COUNT TOVAR ITEMS -->
                             <div class="count_tovar_items">
-                                <p>Sweaters</p>
-                                <span>194 Items</span>
+                                <p>Ten Loai !!!!!!!!!!!!!</p>
                             </div><!-- //COUNT TOVAR ITEMS -->
                             <!-- PRODUC SIZE -->
                             <div id="toggle-sizes">
@@ -96,8 +95,8 @@
                                                 <img class="img_h" src="~/images/hinhsanpham/@sanpham.Hinh2" alt="" />
                                             </div>
                                             <div class="tovar_item_btns">
-                                                <div class="open-project-link"><a class="open-project tovar_view" href="javascript:void(0);" data-url="~/!projects/women/1.html"><span>quick</span> view</a></div>
-                                                <a class="add_bag" href="javascript:void(0);"><i class="fa fa-shopping-cart"></i></a>
+                                                <div class="open-project-link"><a class="open-project tovar_view" href="javascript:void(0);" data-url="@Url.Action("ViewDetailProduct","Shop", new { id = sanpham.MaSanPham })"><span>quick</span> view</a></div>
+                                                <a class="add_bag" href="@Url.Action("ThemGioHang","GioHang", new { @sMaSanPham = @sanpham.MaSanPham, strURL= Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i></a>
                                                 <a class="add_lovelist" href="javascript:void(0);"><i class="fa fa-heart"></i></a>
                                             </div>
                                         </div>

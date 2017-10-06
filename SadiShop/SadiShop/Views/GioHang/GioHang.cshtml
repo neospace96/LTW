@@ -1,7 +1,7 @@
 ﻿@using SadiShop.Models
 @model List<GioHang>
 @{
-    ViewBag.Title = "GioHang";
+    ViewBag.Title = "Giỏ Hàng - Sadi Shop";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
@@ -16,9 +16,8 @@
             <!-- CONTAINER -->
             <div class="container">
                 <h3 class="pull-left"><b>Giỏ hàng</b></h3>
-
                 <div class="pull-right">
-                    <a href="women.html">Back to shop<i class="fa fa-angle-right"></i></a>
+                    <a href="~/Shop/Index">Trở về trang chủ<i class="fa fa-angle-right"></i></a>
                 </div>
             </div><!-- //CONTAINER -->
         </section><!-- //PAGE HEADER -->
@@ -37,7 +36,7 @@
                         <table class="shop_table">
                             <thead>
                                 <tr>
-                                    <th class="product-thumbnail"></th>
+                                    <th class="product-thumbnail" style="text-align:center"></th>
                                     <th class="product-name">Sản phẩm</th>
                                     <th class="product-price">Giá</th>
                                     <th class="product-quantity">Số lượng</th>
@@ -61,8 +60,9 @@
                                         {
                                             <td class="product-price">@String.Format("{0:0,0}", item.dGiaBan)</td>
                                             <td class="product-quantity">
-                                                <input type="number" min="1" name="txtSoLuong" class="Basic" value="@item.iSoLuong" />
-                                                <input class="btn active" type="submit" value="Cập nhật" />
+                                                <input type="number" min="1" name="txtSoLuong" class="center" value="@item.iSoLuong" style="width:50px;margin-left:40px; font-size:16px"/>
+                                                <p></p>
+                                                <input class="btn active" type="submit" value="Sửa"/>
                                             </td>
 
                                             <td class="product-subtotal">@String.Format("{0:0,0}", item.dThanhTien)</td>
@@ -71,8 +71,14 @@
                                         <td class="product-remove"><a href="javascript:void(0);"><span>@Html.ActionLink("Xoá", "XoaGioHang", new { @sMaSP = item.sMaSanPham })</span> <i>@Html.ActionLink("x", "XoaGioHang", new { @sMaSP = item.sMaSanPham })</i></a></td>
                                     </tr>
                                 }
-
-
+                                <tr>
+                                    <th>
+                                        <a>
+                                            @Html.ActionLink("Xóa giỏ hàng", "XoaTatCaGioHang")
+                                        </a>  
+                                    </th>
+                                </tr>
+                                
                             </tbody>
                         </table>
                     </div><!-- //CART TABLE -->

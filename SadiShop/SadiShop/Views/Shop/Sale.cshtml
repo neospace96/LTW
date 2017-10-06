@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Sale";
+    ViewBag.Title = "Khuyến mãi - Sadi Shop";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
@@ -79,7 +79,7 @@
                                         <div class="tovar_item_new">
                                             <div class="tovar_img">
                                                 <img src="~/images/hinhsanpham/@sanpham.Hinh1" alt="" />
-                                                <div class="open-project-link"><a class="open-project tovar_view" href="javascript:void(0);" data-url="~/!projects/women/1.html">chi tiết</a></div>
+                                                <div class="open-project-link"><a class="open-project tovar_view" href="javascript:void(0);" data-url="@Url.Action("ViewDetailProduct","Shop", new { id = sanpham.MaSanPham })">Xem nhanh</a></div>
                                             </div>
                                             <div class="tovar_description clearfix">
                                                 <a class="tovar_title" href="product-page.html">@sanpham.TenSanPham</a>

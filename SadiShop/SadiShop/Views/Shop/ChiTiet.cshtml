@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "ChiTiet";
+    ViewBag.Title = "Chi Tiết - Sadi Shop";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
@@ -28,33 +28,12 @@
                                 <a href="product-page.html" class="tovar_item_small_title">Embroidered bib peasant top</a>
                                 <span class="tovar_item_small_price">$88.00</span>
                             </li>
-                            <li class="clearfix">
-                                <img class="tovar_item_small_img" src="~/images/hinhsanpham/2.jpg" alt="" />
-                                <a href="product-page.html" class="tovar_item_small_title">Merino tippi sweater in geometric</a>
-                                <span class="tovar_item_small_price">$67.00</span>
-                            </li>
-                            <li class="clearfix">
-                                <img class="tovar_item_small_img" src="~/images/hinhsanpham/3.jpg" alt="" />
-                                <a href="product-page.html" class="tovar_item_small_title">Merino triple-stripe elbow-patch sweater</a>
-                                <span class="tovar_item_small_price">$94.00</span>
-                            </li>
-                            <li class="clearfix">
-                                <img class="tovar_item_small_img" src="~/images/hinhsanpham/4.jpg" alt="" />
-                                <a href="product-page.html" class="tovar_item_small_title">Collection cashmere getaway hoodie</a>
-                                <span class="tovar_item_small_price">$228.00</span>
-                            </li>
                         </ul>
                     </div><!-- //SIDEBAR TOVAR DETAILS -->
                     <!-- TOVAR DETAILS WRAPPER -->
                     <div class="col-lg-9 col-md-9 tovar_details_wrapper clearfix">
                         <div class="tovar_details_header clearfix margbot35">
                             <h3 class="pull-left"><b>Chi tiết sản phẩm</b></h3>
-
-                            <div class="tovar_details_pagination pull-right">
-                                <a class="fa fa-angle-left" href="javascript:void(0);"></a>
-                                <span>2 of 34</span>
-                                <a class="fa fa-angle-right" href="javascript:void(0);"></a>
-                            </div>
                         </div>
 
                         <!-- CLEARFIX -->
@@ -106,7 +85,7 @@
                                     <a class="sizeXXXL" href="javascript:void(0);">XXXL</a>
                                 </div>
                                 <div class="tovar_view_btn">
-                                    <a class="add_bag" href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>Add to bag</a>
+                                    <a class="add_bag" href="@Url.Action("ThemGioHang","GioHang", new { @sMaSanPham = @Model.MaSanPham, strURL= Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                     <a class="add_lovelist" href="javascript:void(0);"><i class="fa fa-heart"></i></a>
                                 </div>
                             </div>
