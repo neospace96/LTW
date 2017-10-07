@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SadiShop.Models;
+
+using PagedList;
+using PagedList.Mvc;
 namespace SadiShop.Controllers
 {
     public class ShopController : Controller
@@ -61,10 +64,14 @@ namespace SadiShop.Controllers
             return PartialView(loai);
         }
 
-        public ActionResult HienThiSanPhamTheoLoai(string id)
+        public ActionResult HienThiSanPhamTheoLoai(string id, int ? page)
         {
+            //page 
+            int pageSize = 9;
+            int pageNum = (page ?? 1);
+            //hienthisanpham
             var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
-            return View(sanpham);
+            return View(sanpham.ToPagedList(pageNum, pageSize));
         }
         //HIỂN THỊ CHI TIẾT
         public ActionResult ChiTiet(string id)

@@ -15,7 +15,6 @@
 </head>
 <body>
     <div>
-        @RenderBody()
         <!-- PRELOADER -->
         <div id="preloader"><img src="~/images/preloader.gif" alt="" /></div>
         <!-- //PRELOADER -->
@@ -89,23 +88,10 @@
                             </div><!-- //LOVE LIST -->
                             <!-- MENU -->
                             <ul class="navmenu center">
-                                <li class="sub-menu first active">
-                                    <a href="javascript:void(0);">Trang chủ</a>
-                                    <!-- MEGA MENU -->
-                                    <ul class="mega_menu megamenu_col1 clearfix">
-                                        <li class="col">
-                                            <ol>
-                                                <li class="active"><a href="index.html">Home slider</a></li>
-                                                <li><a href="index2.html">Home men promo</a></li>
-                                                <li><a href="index3.html">Home kids</a></li>
-                                                <li><a href="index4.html">Home video</a></li>
-                                                <li><a href="sale.html">Home Sale<span>sale</span></a></li>
-                                                <li><a href="shoes.html">Home shoes</a></li>
-                                            </ol>
-                                        </li>
-                                    </ul><!-- //MEGA MENU -->
+                                <li class="last first">
+                                    <a href="~/Shop/Index">Trang chủ</a>
                                 </li>
-
+                              
 
                                 <li class="sub-menu">
                                     <a href="javascript:void(0);">Nữ</a>
@@ -172,7 +158,7 @@
                         </div><!-- //MENU BLOCK -->
                     </div><!-- //CONTAINER -->
                 </header><!-- //HEADER -->
-
+                @RenderBody()
                 <!-- FOOTER -->
                 <footer>
 

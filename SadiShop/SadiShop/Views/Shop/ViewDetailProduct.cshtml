@@ -29,13 +29,6 @@
                 <div class="pull-left tovar_brend">@Model.MaNhaSanXuat</div>
                 <div class="pull-right tovar_view_price">@String.Format("{0:0,0}", Model.GiaBan) VNĐ</div>
             </div>
-            <div class="tovar_color_select">
-                <p>Select color</p>
-                <a class="color1" href="javascript:void(0);"></a>
-                <a class="color2 active" href="javascript:void(0);"></a>
-                <a class="color3" href="javascript:void(0);"></a>
-                <a class="color4" href="javascript:void(0);"></a>
-            </div>
             <div class="tovar_size_select">
                 <div class="clearfix">
                     <p class="pull-left">Select SIZE</p>
@@ -50,18 +43,8 @@
                 <a class="sizeXXXL" href="javascript:void(0);">XXXL</a>
             </div>
             <div class="tovar_view_btn">
-                <a class="add_bag" href="@Url.Action("ThemGioHang","GioHang", new { @sMaSanPham = @Model.MaSanPham, strURL= Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                <a class="add_bag" href="@Url.Action("ThemGioHang","GioHang", new { @sMaSanPham = @Model.MaSanPham, strURL= Request.Url })"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                 <a class="add_lovelist" href="javascript:void(0);"><i class="fa fa-heart"></i></a>
-            </div>
-            <div class="tovar_shared clearfix">
-                <p>Share item with friends</p>
-                <ul>
-                    <li><a class="facebook" href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                    <li><a class="twitter" href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                    <li><a class="linkedin" href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a class="google-plus" href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a class="tumblr" href="javascript:void(0);"><i class="fa fa-tumblr"></i></a></li>
-                </ul>
             </div>
         </div>
     </div>

@@ -54,6 +54,8 @@ F:\LTW\SadiShop\SadiShop\bin\Microsoft.Owin.Security.Twitter.dll
 F:\LTW\SadiShop\SadiShop\bin\Microsoft.Web.Infrastructure.dll
 F:\LTW\SadiShop\SadiShop\bin\Newtonsoft.Json.dll
 F:\LTW\SadiShop\SadiShop\bin\Owin.dll
+F:\LTW\SadiShop\SadiShop\bin\PagedList.dll
+F:\LTW\SadiShop\SadiShop\bin\PagedList.Mvc.dll
 F:\LTW\SadiShop\SadiShop\bin\System.Web.Helpers.dll
 F:\LTW\SadiShop\SadiShop\bin\System.Web.Mvc.dll
 F:\LTW\SadiShop\SadiShop\bin\System.Web.Optimization.dll
@@ -63,6 +65,8 @@ F:\LTW\SadiShop\SadiShop\bin\System.Web.WebPages.dll
 F:\LTW\SadiShop\SadiShop\bin\System.Web.WebPages.Razor.dll
 F:\LTW\SadiShop\SadiShop\bin\WebGrease.dll
 F:\LTW\SadiShop\SadiShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\LTW\SadiShop\SadiShop\bin\PagedList.xml
+F:\LTW\SadiShop\SadiShop\bin\PagedList.Mvc.xml
 F:\LTW\SadiShop\SadiShop\bin\System.Web.Helpers.xml
 F:\LTW\SadiShop\SadiShop\bin\System.Web.Mvc.xml
 F:\LTW\SadiShop\SadiShop\bin\System.Web.Optimization.xml
@@ -94,4 +98,3 @@ F:\LTW\SadiShop\SadiShop\bin\Microsoft.AI.Web.xml
 F:\LTW\SadiShop\SadiShop\obj\Debug\SadiShop.csproj.CoreCompileInputs.cache
 F:\LTW\SadiShop\SadiShop\obj\Debug\SadiShop.dll
 F:\LTW\SadiShop\SadiShop\obj\Debug\SadiShop.pdb
-F:\LTW\SadiShop\SadiShop\obj\Debug\SadiShop.csprojResolveAssemblyReference.cache

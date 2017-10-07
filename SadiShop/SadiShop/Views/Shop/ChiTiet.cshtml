@@ -23,11 +23,15 @@
                         <h3><b>Các sản phẩm khác</b></h3>
 
                         <ul class="tovar_items_small clearfix">
-                            <li class="clearfix">
-                                <img class="tovar_item_small_img" src="~/images/hinhsanpham/1.jpg" alt="" />
-                                <a href="product-page.html" class="tovar_item_small_title">Embroidered bib peasant top</a>
-                                <span class="tovar_item_small_price">$88.00</span>
-                            </li>
+                            @*@foreach (var item in Model)
+                            {
+                                <li class="clearfix">
+                                    <img class="tovar_item_small_img" src="~/images/hinhsanpham/@item.Hinh2" alt="" />
+                                    <a href="product-page.html" class="tovar_item_small_title">@item.TenSanPham</a>
+                                    <span class="tovar_item_small_price">@String.Format("{0:0,0}", @item.GiaBan) VNĐ</span>
+                                </li>
+                            }*@
+
                         </ul>
                     </div><!-- //SIDEBAR TOVAR DETAILS -->
                     <!-- TOVAR DETAILS WRAPPER -->

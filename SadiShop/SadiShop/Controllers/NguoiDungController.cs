@@ -101,5 +101,11 @@ namespace SadiShop.Controllers
             return View();
         }
 
+        public ActionResult LogOut()
+        {
+            Session["TaiKhoan"] = null;
+            return RedirectToAction("Index", "Shop");
+        }
+
     }
 }

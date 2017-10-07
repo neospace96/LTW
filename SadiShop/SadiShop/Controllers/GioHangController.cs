@@ -121,5 +121,22 @@ namespace SadiShop.Controllers
             lstGioHang.Clear();
             return RedirectToAction("Index", "Shop");
         }
+
+        [HttpGet]
+        public ActionResult DatHang()
+        {
+            if(Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+            {
+                return RedirectToAction("DangNhap", "NguoiDung");
+            }
+            if (Session["GioHang"] == null)
+            {
+                return RedirectToAction("Index", "Shop");
+            }
+            List<GioHang> lstGioHang = LayGioHang();
+            ViewBag.TongSoLuong = TongSoLuong();
+            ViewBag.TongTien = TongTien();
+            return View(lstGioHang);
+        }
     }
 }

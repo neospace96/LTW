@@ -7,7 +7,7 @@
             {
                 <li class="clearfix">
                     <img class="cart_item_product" src="~/images/hinhsanpham/@item.sHinh" alt="" />
-                    <a href="product-page.html" class="cart_item_title">@item.sTenSanPham</a>
+                    <a href="@Url.Action("ChiTiet", "Shop", new { id = item.sMaSanPham })" class="cart_item_title">@item.sTenSanPham</a>
                     <span class="cart_item_price">@item.iSoLuong × @String.Format("{0:0,0}", item.dGiaBan) VNĐ</span>
                 </li>
             }
