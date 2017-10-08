@@ -34,12 +34,12 @@ namespace SadiShop.Controllers
             {
                 sanpham = new GioHang(sMaSanPham);
                 lstGiohang.Add(sanpham);
-                return Redirect(strURL);
+                return RedirectToAction("Index", "Shop");
             }
             else
             {
                 sanpham.iSoLuong++;
-                return Redirect(strURL);
+                return RedirectToAction("Index", "Shop");
             }
         }
         //TINH SO LUONG

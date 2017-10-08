@@ -20,7 +20,7 @@
                         @ViewData["Error1"]
                         @Html.TextBox("username", "", new { placeholder = "Tên đăng nhập" })
                         @ViewData["Error2"]
-                        @Html.TextBox("password", "", new { placeholder = "Mật khẩu" })
+                        @Html.TextBox("password", "", new { placeholder = "Mật khẩu", @style = "-webkit-text-security: square;" })
                         <div class="clearfix">
                             <div class="pull-left"><input type="checkbox" id="categorymanufacturer1" /><label for="categorymanufacturer1">Nhớ đăng nhập</label></div>
                             <div class="pull-right"><a class="forgot_pass" href="javascript:void(0);">Quên mật khẩu?</a></div>

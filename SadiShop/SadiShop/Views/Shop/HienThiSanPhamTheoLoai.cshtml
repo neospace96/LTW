@@ -6,7 +6,6 @@
     ViewBag.Title = "Sản Phẩm Theo Loại - Sadi Shop";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
-
 <div class="preloader_hide">
     <div id="page">
         <!-- BREADCRUMBS -->
@@ -76,7 +75,8 @@
 
                             <!-- COUNT TOVAR ITEMS -->
                             <div class="count_tovar_items">
-                                <p>Ten Loai !!!!!!!!!!!!!</p>
+                                <p>@ViewBag.tenloai</p>
+                                <span>@ViewBag.soluong sản phẩm</span>
                             </div><!-- //COUNT TOVAR ITEMS -->
                             <!-- PRODUC SIZE -->
                             <div id="toggle-sizes">

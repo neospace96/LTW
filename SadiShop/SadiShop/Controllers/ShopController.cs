@@ -22,13 +22,16 @@ namespace SadiShop.Controllers
         {
             if (string.IsNullOrEmpty(id))
             {
-                return View();//??
+                return View();
             }
-            var sanpham = (from sp
-                           in data.SanPhams
-                           where sp.MaSanPham == id
-                           select sp
-                           ).SingleOrDefault();
+            var sanpham = data.SanPhams.SingleOrDefault(n => n.MaSanPham == id);
+            var nhasanxuat = data.NhanSanXuats.SingleOrDefault(n => n.MaNhaSanXuat == sanpham.MaNhaSanXuat);
+            ViewBag.nsx = nhasanxuat.TenNhaSanXuat;
+            //var sanpham = (from sp
+            //               in data.SanPhams
+            //               where sp.MaSanPham == id
+            //               select sp
+            //               ).SingleOrDefault();
             return PartialView("ViewDetailProduct", sanpham);
         }
 
@@ -69,15 +72,26 @@ namespace SadiShop.Controllers
             //page 
             int pageSize = 9;
             int pageNum = (page ?? 1);
+            var tenloai = data.LoaiSanPhams.SingleOrDefault(n => n.MaLoai == id);
+            ViewBag.tenloai = tenloai.TenLoai;
             //hienthisanpham
+            
             var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
-            return View(sanpham.ToPagedList(pageNum, pageSize));
+            int sl = 0;
+            foreach (var count in sanpham)
+            {
+                sl++;
+            }
+            ViewBag.soluong = sl;
+                return View(sanpham.ToPagedList(pageNum, pageSize));
         }
         //HIỂN THỊ CHI TIẾT
         public ActionResult ChiTiet(string id)
         {
-            var sanpham = from sp in data.SanPhams where sp.MaSanPham == id select sp;
-            return View(sanpham.Single());
+            var sanpham = data.SanPhams.SingleOrDefault(n => n.MaSanPham == id);
+            var nhasanxuat = data.NhanSanXuats.SingleOrDefault(n => n.MaNhaSanXuat == sanpham.MaNhaSanXuat);
+            ViewBag.nsx = nhasanxuat.TenNhaSanXuat;
+            return View(sanpham);
         }
 
         public ActionResult XuHuongMoi()

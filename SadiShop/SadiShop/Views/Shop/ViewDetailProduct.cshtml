@@ -23,10 +23,10 @@
         </div>
 
         <div class="tovar_view_description">
-            <div class="tovar_view_title">@Model.TenSanPham</div>
+            <a href="@Url.Action("ChiTiet", "Shop", new { id = Model.MaSanPham })"><div class="tovar_view_title">@Model.TenSanPham</div></a>
             <div class="tovar_article">@Model.MaSanPham</div>
             <div class="clearfix tovar_brend_price">
-                <div class="pull-left tovar_brend">@Model.MaNhaSanXuat</div>
+                <div class="pull-left tovar_brend">@ViewBag.nsx</div>
                 <div class="pull-right tovar_view_price">@String.Format("{0:0,0}", Model.GiaBan) VNĐ</div>
             </div>
             <div class="tovar_size_select">

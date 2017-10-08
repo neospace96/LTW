@@ -20,9 +20,9 @@
                         @ViewData["Error1"]
                         @Html.TextBox("username", "", new { placeholder = "Tên đăng nhập" })
                         @ViewData["Error2"]
-                        @Html.TextBox("password", "", new { placeholder = "Mật khẩu"})
+                        @Html.TextBox("password", "", new { placeholder = "Mật khẩu", @style = "-webkit-text-security: square;" })
                         @ViewData["Error3"]
-                        @Html.TextBox("repassword", "", new { placeholder = "Nhập lại mật khẩu"})
+                        @Html.TextBox("repassword", "", new { placeholder = "Nhập lại mật khẩu", @style = "-webkit-text-security: square;" })
                         @ViewData["Error4"]
                         @Html.TextBox("fullname", "", new { placeholder = "Họ và tên" })
                         @ViewData["Error5"]
