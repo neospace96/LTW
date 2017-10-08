@@ -23,15 +23,7 @@
                         <h3><b>Các sản phẩm khác</b></h3>
 
                         <ul class="tovar_items_small clearfix">
-                            @*@foreach (var item in Model)
-                            {
-                                <li class="clearfix">
-                                    <img class="tovar_item_small_img" src="~/images/hinhsanpham/@item.Hinh2" alt="" />
-                                    <a href="product-page.html" class="tovar_item_small_title">@item.TenSanPham</a>
-                                    <span class="tovar_item_small_price">@String.Format("{0:0,0}", @item.GiaBan) VNĐ</span>
-                                </li>
-                            }*@
-
+                            @Html.Action("SanPhamKhac", "Shop")
                         </ul>
                     </div><!-- //SIDEBAR TOVAR DETAILS -->
                     <!-- TOVAR DETAILS WRAPPER -->
@@ -47,16 +39,16 @@
                                     <ul class="slides">
                                         <li><a href="javascript:void(0);"><img src="~/images/hinhsanpham/@Model.Hinh1" alt="" /></a></li>
                                         <li><a href="javascript:void(0);"><img src="~/images/hinhsanpham/@Model.Hinh2" alt="" /></a></li>
-                                        <li><a href="javascript:void(0);"><img src="~/images/hinhsanpham/1_3.jpg" alt="" /></a></li>
-                                        <li><a href="javascript:void(0);"><img src="~/images/hinhsanpham/1_4.jpg" alt="" /></a></li>
+                                        <li><a href="javascript:void(0);"><img src="~/images/hinhsanpham/@Model.Hinh3" alt="" /></a></li>
+                                        <li><a href="javascript:void(0);"><img src="~/images/hinhsanpham/@Model.Hinh4" alt="" /></a></li>
                                     </ul>
                                 </div>
                                 <div id="carousel2" class="flexslider">
                                     <ul class="slides">
                                         <li><a href="javascript:void(0);"><img src="~/images/hinhsanpham/@Model.Hinh1" alt="" /></a></li>
                                         <li><a href="javascript:void(0);"><img src="~/images/hinhsanpham/@Model.Hinh2" alt="" /></a></li>
-                                        <li><a href="javascript:void(0);"><img src="~/images/hinhsanpham/1_3.jpg" alt="" /></a></li>
-                                        <li><a href="javascript:void(0);"><img src="~/images/hinhsanpham/1_4.jpg" alt="" /></a></li>
+                                        <li><a href="javascript:void(0);"><img src="~/images/hinhsanpham/@Model.Hinh3" alt="" /></a></li>
+                                        <li><a href="javascript:void(0);"><img src="~/images/hinhsanpham/@Model.Hinh4" alt="" /></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -68,10 +60,9 @@
                                     <div class="pull-left tovar_brend">@ViewBag.nsx</div>
                                     <div class="pull-right tovar_view_price">@String.Format("{0:0,0}", Model.GiaBan) VNĐ</div>
                                 </div>
-                                <div class="tovar_size_select">
+                                <div class="tovar_size_select center">
                                     <div class="clearfix">
-                                        <p class="pull-left">Select SIZE</p>
-                                        <span>Size & Fit</span>
+                                        <p class="pull-left">Chọn SIZE</p>
                                     </div>
                                     <a class="sizeXS" href="javascript:void(0);">XS</a>
                                     <a class="sizeS active" href="javascript:void(0);">S</a>
@@ -80,9 +71,8 @@
                                     <a class="sizeXL" href="javascript:void(0);">XL</a>
                                     <a class="sizeXXL" href="javascript:void(0);">XXL</a>
                                 </div>
-                                <div class="tovar_view_btn">
+                                <div class="tovar_view_btn center">
                                     <a class="add_bag" href="@Url.Action("ThemGioHang","GioHang", new { @sMaSanPham = @Model.MaSanPham, strURL= Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
-                                    <a class="add_lovelist" href="javascript:void(0);"><i class="fa fa-heart"></i></a>
                                 </div>
                             </div>
                         </div><!-- //CLEARFIX -->
@@ -90,24 +80,15 @@
                         <div class="tovar_information">
                             <ul class="tabs clearfix">
                                 <li class="current">Chi tiết</li>
-                                <li>Thông tin</li>
+                                <li>Chọn size phù hợp</li>
                             </ul>
                             <div class="box visible">
                                 <p>Mã sản phẩm: @Model.MaSanPham</p>
                                 <p>Tên sản phẩm: @Model.TenSanPham </p>
-                                <p>Chất liệu: @Model.ChatLieu</p>
+                                <p>Thông tin: @Model.Thongtin</p>
                             </div>
-                            <div class="box">
-                                Original Levi 501 <br>
-                                Button fly<br>
-                                Regular fit<br>
-                                waist 28"-32 =16"hem<br>
-                                waist 33" = 17" hem<br>
-                                waist 34"-40"=18" hem<br>
-                                Levi's have started to introduce the red tab with just the (R) (registered trade mark) on the red tab<br><br>
-                                Size Details:<br>
-                                All sizes from 28-40 waist<br>
-                                Leg length 30", 32", 34", 36"
+                            <div class="box center">
+                                <img src="~/images/tovar/chonsize.JPG" />
                             </div>
                         </div><!-- //TOVAR INFORMATION -->
                     </div><!-- //TOVAR DETAILS WRAPPER -->

@@ -12,13 +12,13 @@ namespace SadiShop.Controllers
     public class ShopController : Controller
     {
         dbQLQuanAoDataContext data = new dbQLQuanAoDataContext();
-
+        //--------------------------------HIỂN THỊ SẢN PHẨM TRANG INDEX--------------------------------
         private List<SanPham> Laysanphammoi(int count)
         {
             return data.SanPhams.OrderByDescending(a => a.MaSanPham).Take(count).ToList();
         }
 
-        public ActionResult ViewDetailProduct(string id)
+        public ActionResult XemNhanh(string id)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -32,9 +32,8 @@ namespace SadiShop.Controllers
             //               where sp.MaSanPham == id
             //               select sp
             //               ).SingleOrDefault();
-            return PartialView("ViewDetailProduct", sanpham);
+            return PartialView("XemNhanh", sanpham);
         }
-
 
         // GET: Shop
         public ActionResult Index()
@@ -43,6 +42,10 @@ namespace SadiShop.Controllers
             return View(sanphammoi);
         }
 
+        
+
+
+        //---------------------------LOẠI SẢN PHẨM TRÊN MENU ----------------------------------
         public ActionResult LoaisanphamNu()
         {
             var loai = from l in data.LoaiSanPhams where l.MaLoaiCha == "L01" select l;
@@ -67,10 +70,13 @@ namespace SadiShop.Controllers
             return PartialView(loai);
         }
 
-        public ActionResult HienThiSanPhamTheoLoai(string id, int ? page)
+
+
+        //-------------------------------HIỂN THỊ SẢN PHẨM THEO LOẠI--------------------------------
+        public ActionResult HienThiSanPhamTheoLoaiNu(string id, int ? page)
         {
             //page 
-            int pageSize = 9;
+            int pageSize = 6;
             int pageNum = (page ?? 1);
             var tenloai = data.LoaiSanPhams.SingleOrDefault(n => n.MaLoai == id);
             ViewBag.tenloai = tenloai.TenLoai;
@@ -85,7 +91,62 @@ namespace SadiShop.Controllers
             ViewBag.soluong = sl;
                 return View(sanpham.ToPagedList(pageNum, pageSize));
         }
-        //HIỂN THỊ CHI TIẾT
+
+        public ActionResult HienThiSanPhamTheoLoaiNam(string id, int? page)
+        {
+            //page 
+            int pageSize = 6;
+            int pageNum = (page ?? 1);
+            var tenloai = data.LoaiSanPhams.SingleOrDefault(n => n.MaLoai == id);
+            ViewBag.tenloai = tenloai.TenLoai;
+            //hienthisanpham
+            var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
+            int sl = 0;
+            foreach (var count in sanpham)
+            {
+                sl++;
+            }
+            ViewBag.soluong = sl;
+            return View(sanpham.ToPagedList(pageNum, pageSize));
+        }
+
+        public ActionResult HienThiSanPhamTheoLoaiGiay(string id, int? page)
+        {
+            //page 
+            int pageSize = 6;
+            int pageNum = (page ?? 1);
+            var tenloai = data.LoaiSanPhams.SingleOrDefault(n => n.MaLoai == id);
+            ViewBag.tenloai = tenloai.TenLoai;
+            //hienthisanpham
+            var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
+            int sl = 0;
+            foreach (var count in sanpham)
+            {
+                sl++;
+            }
+            ViewBag.soluong = sl;
+            return View(sanpham.ToPagedList(pageNum, pageSize));
+        }
+
+        public ActionResult HienThiSanPhamTheoLoaiKhac(string id, int? page)
+        {
+            //page 
+            int pageSize = 6;
+            int pageNum = (page ?? 1);
+            var tenloai = data.LoaiSanPhams.SingleOrDefault(n => n.MaLoai == id);
+            ViewBag.tenloai = tenloai.TenLoai;
+            //hienthisanpham
+            var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
+            int sl = 0;
+            foreach (var count in sanpham)
+            {
+                sl++;
+            }
+            ViewBag.soluong = sl;
+            return View(sanpham.ToPagedList(pageNum, pageSize));
+        }
+
+        //------------------------------HIỂN THỊ CHI TIẾT--------------------------------
         public ActionResult ChiTiet(string id)
         {
             var sanpham = data.SanPhams.SingleOrDefault(n => n.MaSanPham == id);
@@ -94,12 +155,19 @@ namespace SadiShop.Controllers
             return View(sanpham);
         }
 
+        public ActionResult SanPhamKhac()
+        {
+            var sanphamkhac = Laysanphammoi(4);
+            return PartialView(sanphamkhac);
+        }
+        //--------------------------------XU HƯỚNG MỚI--------------------------------
         public ActionResult XuHuongMoi()
         {
             var sanpham = from sp in data.SanPhams orderby sp.MaSanPham ascending select sp;
             return PartialView(sanpham);
         }
 
+        //--------------------------------SẢN PHẨM SALE--------------------------------
         private List<SanPham> SanPhamSale(int count)
         {
             return data.SanPhams.OrderByDescending(a => a.GiaBan).Take(count).ToList();
@@ -111,6 +179,8 @@ namespace SadiShop.Controllers
             return View(sanphamsale);
         }
 
+
+        //-------------------------------ABOUT + LIÊN HỆ--------------------------------
         public ActionResult About()
         {
             return View();
