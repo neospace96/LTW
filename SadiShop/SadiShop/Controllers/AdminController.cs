@@ -16,6 +16,11 @@ namespace SadiShop.Controllers
             return View();
         }
 
+        public ActionResult SanPham()
+        {
+            return View(data.SanPhams.ToList());
+        }
+
         [HttpGet]
         public ActionResult Login()
         {
