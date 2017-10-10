@@ -71,7 +71,7 @@ namespace SadiShop.Controllers
                 if (ModelState.IsValid)
                 {
                     var fileName = Path.GetFileName(fileUpload.FileName);
-                    var path = Path.Combine(Server.MapPath("~/images/hinhsanpham"), fileName);
+                    var path = Path.Combine(Server.MapPath("~/images/hinhsanpham/"), fileName);
                     if (System.IO.File.Exists(path))
                     {
                         ViewBag.ThongBao = "Hình ảnh đã tồn tại";
@@ -80,13 +80,12 @@ namespace SadiShop.Controllers
                     else
                     {
                         fileUpload.SaveAs(path);
-                        sp.Hinh1 = fileName;
-                        data.SanPhams.InsertOnSubmit(sp);
-                        data.SubmitChanges();
                     }
+                    sp.Hinh1 = fileName;
+                    data.SanPhams.InsertOnSubmit(sp);
+                    data.SubmitChanges();
                 }
-                ViewBag.ThongBaoS = "Thêm sản phẩm thành công";
-                return View();
+                return RedirectToAction("SanPham");
             }
         }
 
@@ -139,7 +138,42 @@ namespace SadiShop.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
+            ViewBag.MaLoai = new SelectList(data.LoaiSanPhams.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
+            ViewBag.MaNhaSanXuat = new SelectList(data.NhanSanXuats.ToList().OrderBy(n => n.TenNhaSanXuat), "MaNhaSanXuat", "TenNhaSanXuat");
             return View(sp);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SuaSanPham(SanPham sp, HttpPostedFileBase fileUpload)
+        {
+            ViewBag.MaLoai = new SelectList(data.LoaiSanPhams.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
+            ViewBag.MaNhaSanXuat = new SelectList(data.NhanSanXuats.ToList().OrderBy(n => n.TenNhaSanXuat), "MaNhaSanXuat", "TenNhaSanXuat");
+            if (fileUpload == null)
+            {
+                ViewBag.ThongBao = "Vui lòng chọn hình sản phẩm";
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    var fileName = Path.GetFileName(fileUpload.FileName);
+                    var path = Path.Combine(Server.MapPath("~/images/hinhsanpham/"), fileName);
+                    if (System.IO.File.Exists(path))
+                    {
+                        ViewBag.ThongBao = "Hình ảnh đã tồn tại";
+                    }
+                    else
+                    {
+                        fileUpload.SaveAs(path);
+                    }
+                    sp.Hinh1 = fileName;
+                    UpdateModel(sp);
+                    data.SubmitChanges();
+                }
+                return RedirectToAction("SanPham");
+            }
         }
     }
 }

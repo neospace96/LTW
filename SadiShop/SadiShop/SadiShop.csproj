@@ -200,11 +200,15 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710101012213_adddata.cs" />
+    <Compile Include="Migrations\201710101012213_adddata.Designer.cs">
+      <DependentUpon>201710101012213_adddata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\dbQLQuanAo.designer.cs">
       <AutoGen>True</AutoGen>
@@ -2342,8 +2346,6 @@
     <Content Include="Views\Shop\LoaisanphamNam.cshtml" />
     <Content Include="Views\Shop\HienThiSanPhamTheoLoaiNu.cshtml" />
     <Content Include="Views\Shop\XuHuongMoi.cshtml" />
-    <Content Include="Views\NguoiDung\DangKy.cshtml" />
-    <Content Include="Views\NguoiDung\DangNhap.cshtml" />
     <Content Include="Views\GioHang\GioHang.cshtml" />
     <Content Include="Views\Shop\About.cshtml" />
     <Content Include="Views\Shop\LienHe.cshtml" />
@@ -2368,13 +2370,21 @@
     <Content Include="tinymce\js\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Views\Admin\ChiTietSanPham.cshtml" />
     <Content Include="Views\Admin\XoaSanPham.cshtml" />
-    <Content Include="Views\Admin\SuaSanPham.cshtml" />
     <Content Include="Views\Shop\GiayBanChay.cshtml" />
     <Content Include="Views\Shop\LoaisanphamGiay.cshtml" />
     <Content Include="Views\Shop\HienThiSanPhamTheoLoaiGiay.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shop\KetQuaTimKiem.cshtml" />
+    <Content Include="Views\Shop\Search.cshtml" />
+    <Content Include="Views\Admin\SuaSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710101012213_adddata.resx">
+      <DependentUpon>201710101012213_adddata.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -193,5 +193,42 @@ namespace SadiShop.Controllers
         {
             return View();
         }
+
+        //------------------------------TÌM KIỂM-----------------------------------------
+            public PartialViewResult Search()
+            {
+                return PartialView();
+            }
+            [HttpPost]
+            public ActionResult KetQuaTimKiem(int? page, FormCollection f)
+            {
+
+                int pageSize = 9;
+                int pageNumber = (page ?? 1);
+                string sTuKhoa = f["txtTimKiem"].ToString();
+                ViewBag.TuKhoa = sTuKhoa;
+                var lstSP = data.SanPhams.Where(n => n.TenSanPham.Contains(sTuKhoa)).ToList().OrderByDescending(n => n.MaSanPham).ToPagedList(pageNumber, pageSize);
+                if (lstSP.Count == 0)
+                {
+                    ViewBag.ThongBao = "Không có sản phẩm phù hợp";
+                }
+                ViewBag.ThongBao = "Đã tìm thấy" + lstSP.Count + " kết quả!";
+                return View(lstSP);
+            }
+            [HttpGet]
+            public ActionResult KetQuaTimKiem(int? page, string sTuKhoa)
+            {
+
+                int pageSize = 9;
+                int pageNumber = (page ?? 1);
+                ViewBag.TuKhoa = sTuKhoa;
+                var lstSP = data.SanPhams.Where(n => n.TenSanPham.Contains(sTuKhoa)).ToList().OrderByDescending(n => n.MaSanPham).ToPagedList(pageNumber, pageSize);
+                if (lstSP.Count == 0)
+                {
+                    ViewBag.ThongBao = "Không có sản phẩm phù hợp";
+                }
+                ViewBag.ThongBao = "Đã tìm thấy" + lstSP.Count + " kết quả!";
+                return View(lstSP);
+            }
+        }
     }
-}
