@@ -80,7 +80,6 @@
       <Column Name="Hinh2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="Hinh3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="Hinh4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Hinh5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Association Name="SanPham_ChiTietSanPham" Member="ChiTietSanPhams" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="ChiTietSanPham" />
       <Association Name="LoaiSanPham_SanPham" Member="LoaiSanPham" ThisKey="MaLoai" OtherKey="MaLoai" Type="LoaiSanPham" IsForeignKey="true" />
       <Association Name="NhanSanXuat_SanPham" Member="NhanSanXuat" ThisKey="MaNhaSanXuat" OtherKey="MaNhaSanXuat" Type="NhanSanXuat" IsForeignKey="true" />

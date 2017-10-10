@@ -1316,8 +1316,6 @@ namespace SadiShop.Models
 		
 		private string _Hinh4;
 		
-		private string _Hinh5;
-		
 		private EntityRef<LoaiSanPham> _LoaiSanPham;
 		
 		private EntityRef<NhanSanXuat> _NhanSanXuat;
@@ -1346,8 +1344,6 @@ namespace SadiShop.Models
     partial void OnHinh3Changed();
     partial void OnHinh4Changing(string value);
     partial void OnHinh4Changed();
-    partial void OnHinh5Changing(string value);
-    partial void OnHinh5Changed();
     #endregion
 		
 		public SanPham()
@@ -1561,26 +1557,6 @@ namespace SadiShop.Models
 					this._Hinh4 = value;
 					this.SendPropertyChanged("Hinh4");
 					this.OnHinh4Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh5", DbType="VarChar(100)")]
-		public string Hinh5
-		{
-			get
-			{
-				return this._Hinh5;
-			}
-			set
-			{
-				if ((this._Hinh5 != value))
-				{
-					this.OnHinh5Changing(value);
-					this.SendPropertyChanging();
-					this._Hinh5 = value;
-					this.SendPropertyChanged("Hinh5");
-					this.OnHinh5Changed();
 				}
 			}
 		}

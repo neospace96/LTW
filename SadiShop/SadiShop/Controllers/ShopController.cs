@@ -58,12 +58,14 @@ namespace SadiShop.Controllers
             return PartialView(loai);
         }
 
+        //----------------------------------GIÀY----------------------------------------
         public ActionResult LoaisanphamGiay()
         {
             var loai = from l in data.LoaiSanPhams where l.MaLoaiCha == "L03" select l;
             return PartialView(loai);
         }
 
+        //----------------------------------------------KHÁC--------------------------------------------
         public ActionResult LoaisanphamKhac()
         {
             var loai = from l in data.LoaiSanPhams where l.MaLoaiCha == "L04" select l;
@@ -178,6 +180,7 @@ namespace SadiShop.Controllers
             var sanphamsale = SanPhamSale(10);
             return View(sanphamsale);
         }
+
 
 
         //-------------------------------ABOUT + LIÊN HỆ--------------------------------
