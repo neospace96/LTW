@@ -1888,6 +1888,7 @@
     <Content Include="images\master_card.jpg" />
     <Content Include="images\my_account_bg.jpg" />
     <Content Include="images\paypal.jpg" />
+    <Content Include="images\pk_pages.jpg" />
     <Content Include="images\preloader.gif" />
     <Content Include="images\register_bacckground.jpg" />
     <Content Include="images\shoes_page.jpg" />
@@ -1924,6 +1925,8 @@
     <Content Include="images\tovar\banner31.jpg" />
     <Content Include="images\tovar\banner32.jpg" />
     <Content Include="images\tovar\banner4.jpg" />
+    <Content Include="images\tovar\banner40.jpg" />
+    <Content Include="images\tovar\banner41.jpg" />
     <Content Include="images\tovar\banner5.jpg" />
     <Content Include="images\tovar\banner8.jpg" />
     <Content Include="images\tovar\banner9.jpg" />
@@ -2377,6 +2380,8 @@
     <Content Include="Views\Shop\KetQuaTimKiem.cshtml" />
     <Content Include="Views\Shop\Search.cshtml" />
     <Content Include="Views\Admin\SuaSanPham.cshtml" />
+    <Content Include="Views\Shop\LoaisanphamPhuKien.cshtml" />
+    <Content Include="Views\Shop\HienThiSanPhamTheoLoaiPhuKien.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

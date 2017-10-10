@@ -66,7 +66,7 @@ namespace SadiShop.Controllers
         }
 
         //----------------------------------------------KHÁC--------------------------------------------
-        public ActionResult LoaisanphamKhac()
+        public ActionResult LoaisanphamPhuKien()
         {
             var loai = from l in data.LoaiSanPhams where l.MaLoaiCha == "L04" select l;
             return PartialView(loai);
@@ -130,7 +130,7 @@ namespace SadiShop.Controllers
             return View(sanpham.ToPagedList(pageNum, pageSize));
         }
 
-        public ActionResult HienThiSanPhamTheoLoaiKhac(string id, int? page)
+        public ActionResult HienThiSanPhamTheoLoaiPhuKien(string id, int? page)
         {
             //page 
             int pageSize = 6;

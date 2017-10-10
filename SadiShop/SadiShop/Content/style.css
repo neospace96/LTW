@@ -2342,7 +2342,50 @@ ul.comments li ul li{
 .shoes_page_description .btn {padding-left:47px; padding-right:47px;}
 
 
+/*-----------------------------------------------------------------------------------*/
+/*	PHỤ KIỆN
+/*-----------------------------------------------------------------------------------*/
+.pk_page {
+    min-height: 960px;
+    background-image: url(../images/pk_pages.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
+.pk_page_description {
+    padding: 287px 0 98px;
+    text-align: left;
+}
+
+    .pk_page_description p {
+        margin: 0;
+        text-transform: uppercase;
+        font-weight: 100;
+        line-height: 78px;
+        font-size: 100px;
+        color: #fff;
+    }
+
+        .pk_page_description p b {
+            font-weight: 900;
+            line-height: 95px;
+            font-size: 120px;
+        }
+
+    .pk_page_description span {
+        display: block;
+        padding-bottom: 59px;
+        text-transform: uppercase;
+        font-weight: 300;
+        line-height: 63px;
+        font-size: 71px;
+        color: #fff;
+    }
+
+    .pk_page_description .btn {
+        padding-left: 47px;
+        padding-right: 47px;
+    }
 
 
 

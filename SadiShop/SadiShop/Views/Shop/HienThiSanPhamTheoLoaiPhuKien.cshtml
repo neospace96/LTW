@@ -3,27 +3,27 @@
 @model PagedList.PagedList<SanPham>
 
 @{
-    ViewBag.Title = "HienThiSanPhamTheoLoaiGiay";
+    ViewBag.Title = "HienThiSanPhamTheoLoaiPhuKien";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
 <div class="preloader_hide">
     <div id="page">
         <!-- BREADCRUMBS -->
-        <section class="shoes_page parallax margbot30">
+        <section class="pk_page parallax margbot30">
 
             <!-- CONTAINER -->
             <div class="container">
-                <div class="shoes_page_description">
-                    <p>NEW SHOES <b>COLLECTIONS</b></p>
-                    <span>Up to 50%</span>
-                    <a class="btn active" href="#">Rinh ngay</a>
+                <div class="pk_page_description">
+                    <p>BỘ SƯU TẬP <br /><b>HOÀN TOÀN MỚI</b></p>
+                    <span>Giảm ngay 50%</span>
+                    <a class="btn active" href="#">Lựa chọn ngay</a>
                 </div>
                 <!-- ROW -->
                 <div class="row">
                     <div class="top_sale_banners">
-                        <div class="col-lg-3 col-md-3 col-xs-4 col-ss-12 pull-right"><a class="banner nobord white_bord margbot30" href="javascript:void(0);"><img src="~/images/tovar/banner27.jpg" alt="" /></a></div>
-                        <div class="col-lg-3 col-md-3 col-xs-4 col-ss-12 pull-right"><a class="banner nobord white_bord margbot30" href="javascript:void(0);"><img src="~/images/tovar/banner28.jpg" alt="" /></a></div>
+                        <div class="col-lg-3 col-md-3 col-xs-4 col-ss-12 pull-right"><a class="banner nobord white_bord margbot30" href="javascript:void(0);"><img src="~/images/tovar/banner40.jpg" alt="" /></a></div>
+                        <div class="col-lg-3 col-md-3 col-xs-4 col-ss-12 pull-right"><a class="banner nobord white_bord margbot30" href="javascript:void(0);"><img src="~/images/tovar/banner41.jpg" alt="" /></a></div>
                     </div>
                 </div><!-- //ROW -->
             </div><!-- //CONTAINER -->
@@ -44,13 +44,9 @@
                         <div class="sidepanel widget_categories">
                             <h3>Danh mục sản phẩm</h3>
                             <ul>
-                                <li><a href="javascript:void(0);">@Html.Action("LoaisanphamGiay", "Shop")</a></li>
+                                <li><a href="javascript:void(0);">@Html.Action("LoaisanphamPhuKien", "Shop")</a></li>
                             </ul>
                         </div><!-- //CATEGORIES -->
-                        <!-- BANNERS WIDGET -->
-                        <div class="widget_banners">
-                            <a class="banner nobord margbot10" href="javascript:void(0);"><img src="~/images/tovar/banner29.jpg" alt="" /></a>
-                        </div><!-- //BANNERS WIDGET -->
                         <!-- NEWSLETTER FORM WIDGET -->
                         <div class="sidepanel widget_newsletter">
                             <div class="newsletter_wrapper">
@@ -64,11 +60,6 @@
                     </div><!-- //SIDEBAR -->
                     <!-- SHOP PRODUCTS -->
                     <div class="col-lg-9 col-sm-9 col-sm-9 padbot20">
-
-                        <!-- SHOP BANNER -->
-                        <div class="banner_block margbot15">
-                            <a class="banner nobord" href="javascript:void(0);"><img src="~/images/tovar/banner32.jpg" alt="" /></a>
-                        </div><!-- //SHOP BANNER -->
                         <!-- SORTING TOVAR PANEL -->
                         <div class="sorting_options clearfix">
 
@@ -114,24 +105,18 @@
                         <div class="clearfix">
                             <!-- PAGINATION -->
                             <ul class="pagination">
-                                @Html.PagedListPager(Model, page => Url.Action("HienThiSanPhamTheoLoaiGiay", new { page = page }))
+                                @Html.PagedListPager(Model, page => Url.Action("HienThiSanPhamTheoLoaiPhuKien", new { page = page }))
                             </ul><!-- //PAGINATION -->
                         </div>
                         <hr />
                         <!-- CONTAINER -->
                         <div class="container" data-appear-top-offset='-100' data-animated='fadeInUp'>
-                        <br/>
-                            <!-- ROW -->
-                            <div class="row">
-                                <div class="top_sale_banners center">
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-ss-12"><a class="banner nobord margbot30" href="javascript:void(0);"><img src="~/images/tovar/banner30.jpg" alt="" /></a></div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ss-12"><a class="banner nobord margbot30" href="javascript:void(0);"><img src="~/images/tovar/banner31.jpg" alt="" /></a></div>
-                                </div>
-                            </div><!-- //ROW -->
                         </div><!-- //SHOP PRODUCTS -->
-                </div><!-- //ROW -->
-            </div><!-- //CONTAINER -->
+                    </div><!-- //ROW -->
+                </div><!-- //CONTAINER -->
         </section><!-- //SHOP -->
     </div>
 </div>
+
+
 
