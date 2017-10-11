@@ -42,7 +42,7 @@ namespace SadiShop.Controllers
             return View(sanphammoi);
         }
 
-        
+
 
 
         //---------------------------LOẠI SẢN PHẨM TRÊN MENU ----------------------------------
@@ -75,7 +75,7 @@ namespace SadiShop.Controllers
 
 
         //-------------------------------HIỂN THỊ SẢN PHẨM THEO LOẠI--------------------------------
-        public ActionResult HienThiSanPhamTheoLoaiNu(string id, int ? page)
+        public ActionResult HienThiSanPhamTheoLoaiNu(string id, int? page)
         {
             //page 
             int pageSize = 6;
@@ -83,7 +83,7 @@ namespace SadiShop.Controllers
             var tenloai = data.LoaiSanPhams.SingleOrDefault(n => n.MaLoai == id);
             ViewBag.tenloai = tenloai.TenLoai;
             //hienthisanpham
-            
+
             var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
             int sl = 0;
             foreach (var count in sanpham)
@@ -91,7 +91,7 @@ namespace SadiShop.Controllers
                 sl++;
             }
             ViewBag.soluong = sl;
-                return View(sanpham.ToPagedList(pageNum, pageSize));
+            return View(sanpham.ToPagedList(pageNum, pageSize));
         }
 
         public ActionResult HienThiSanPhamTheoLoaiNam(string id, int? page)
@@ -195,40 +195,43 @@ namespace SadiShop.Controllers
         }
 
         //------------------------------TÌM KIỂM-----------------------------------------
-            public PartialViewResult Search()
+        [HttpPost]
+        public ActionResult KetQuaTimKiem(int? page, FormCollection f)
+        {
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            string sTuKhoa = f["txtTimKiem"].ToString();
+            ViewBag.TuKhoa = sTuKhoa;
+            var lstSP = data.SanPhams.Where(n => n.TenSanPham.Contains(sTuKhoa)).ToList().OrderByDescending(n => n.MaSanPham).ToPagedList(pageNumber, pageSize);
+            if (lstSP.Count == 0)
             {
-                return PartialView();
+                ViewBag.ThongBao = "Không có sản phẩm phù hợp";
             }
-            [HttpPost]
-            public ActionResult KetQuaTimKiem(int? page, FormCollection f)
+            else
             {
-
-                int pageSize = 9;
-                int pageNumber = (page ?? 1);
-                string sTuKhoa = f["txtTimKiem"].ToString();
-                ViewBag.TuKhoa = sTuKhoa;
-                var lstSP = data.SanPhams.Where(n => n.TenSanPham.Contains(sTuKhoa)).ToList().OrderByDescending(n => n.MaSanPham).ToPagedList(pageNumber, pageSize);
-                if (lstSP.Count == 0)
-                {
-                    ViewBag.ThongBao = "Không có sản phẩm phù hợp";
-                }
-                ViewBag.ThongBao = "Đã tìm thấy" + lstSP.Count + " kết quả!";
-                return View(lstSP);
+                ViewBag.ThongBao = "Đã tìm thấy " + lstSP.Count + " kết quả!";
             }
-            [HttpGet]
-            public ActionResult KetQuaTimKiem(int? page, string sTuKhoa)
-            {
 
-                int pageSize = 9;
-                int pageNumber = (page ?? 1);
-                ViewBag.TuKhoa = sTuKhoa;
-                var lstSP = data.SanPhams.Where(n => n.TenSanPham.Contains(sTuKhoa)).ToList().OrderByDescending(n => n.MaSanPham).ToPagedList(pageNumber, pageSize);
-                if (lstSP.Count == 0)
-                {
-                    ViewBag.ThongBao = "Không có sản phẩm phù hợp";
-                }
-                ViewBag.ThongBao = "Đã tìm thấy" + lstSP.Count + " kết quả!";
-                return View(lstSP);
+            return View(lstSP);
+        }
+
+        [HttpGet]
+        public ActionResult KetQuaTimKiem(int? page, string sTuKhoa)
+        {
+            List<SanPham> sp = data.SanPhams.Where(n => n.TenSanPham.Contains(sTuKhoa)).ToList();
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            if (sp.Count == 0)
+            {
+                ViewBag.ThongBao = "Không tìm thấy sản phẩm nào :(";
+                return View(data.SanPhams.OrderBy(n => n.TenSanPham).ToPagedList(pageNumber, pageSize));
+            }
+            else
+            {
+                ViewBag.ThongBao = "Đã tìm thấy " + sp.Count + " kết quả";
+                return View(sp.OrderBy(n => n.TenSanPham).ToPagedList(pageNumber, pageSize));
             }
         }
+
     }
+}

@@ -123,12 +123,13 @@ namespace SadiShop.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult DatHang()
         {
-            if(Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
-            {
-                return RedirectToAction("DangNhap", "NguoiDung");
-            }
+            //if(Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+            //{
+            //    return RedirectToAction("DangNhap", "NguoiDung");
+            //}
             if (Session["GioHang"] == null)
             {
                 return RedirectToAction("Index", "Shop");
@@ -138,5 +139,7 @@ namespace SadiShop.Controllers
             ViewBag.TongTien = TongTien();
             return View(lstGioHang);
         }
+
+
     }
 }

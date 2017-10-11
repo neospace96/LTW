@@ -45,6 +45,8 @@ namespace SadiShop.Controllers
             }
             return View();
         }
+
+        //-------------------------------------------SAN PHAM----------------------------------------------------------------------
         //tạo list danh sách
         [HttpGet]
         public ActionResult ThemMoiSanPham()
@@ -93,7 +95,7 @@ namespace SadiShop.Controllers
         {
             SanPham sp = data.SanPhams.SingleOrDefault(n => n.MaSanPham == id);
             //ViewBag.MaSanPham = sp.MaSanPham;
-            if(sp == null)
+            if (sp == null)
             {
                 Response.StatusCode = 404;
                 return null;
@@ -106,7 +108,7 @@ namespace SadiShop.Controllers
         {
             SanPham sp = data.SanPhams.SingleOrDefault(n => n.MaSanPham == id);
             //ViewBag.MaSanPham = sp.MaSanPham;
-            if(sp == null)
+            if (sp == null)
             {
                 Response.StatusCode = 404;
                 return null;
@@ -119,7 +121,7 @@ namespace SadiShop.Controllers
         {
             SanPham sp = data.SanPhams.SingleOrDefault(n => n.MaSanPham == id);
             ViewBag.MaSanPham = sp.MaSanPham;
-            if(sp == null)
+            if (sp == null)
             {
                 Response.StatusCode = 404;
                 return null;
@@ -133,7 +135,7 @@ namespace SadiShop.Controllers
         public ActionResult SuaSanPham(string id)
         {
             SanPham sp = data.SanPhams.SingleOrDefault(n => n.MaSanPham == id);
-            if(sp == null)
+            if (sp == null)
             {
                 Response.StatusCode = 404;
                 return null;
@@ -175,5 +177,128 @@ namespace SadiShop.Controllers
                 return RedirectToAction("SanPham");
             }
         }
+
+        //----------------------------------------------LOAI SAN PHAM---------------------------------------------
+        public ActionResult LoaiSanPham()
+        {
+            return View(data.LoaiSanPhams.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult ThemMoiLoaiSanPham()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ThemMoiLoaiSanPham(LoaiSanPham sp)
+        {
+            data.LoaiSanPhams.InsertOnSubmit(sp);
+            data.SubmitChanges();
+            return RedirectToAction("LoaiSanPham");
+        }
+
+        public ActionResult ChiTietLoaiSanPham(string id)
+        {
+            LoaiSanPham sp = data.LoaiSanPhams.SingleOrDefault(n => n.MaLoai == id);
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(sp);
+        }
+
+        [HttpGet]
+        public ActionResult XoaLoaiSanPham(string id)
+        {
+            LoaiSanPham sp = data.LoaiSanPhams.SingleOrDefault(n => n.MaLoai == id);
+            //ViewBag.MaSanPham = sp.MaSanPham;
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(sp);
+        }
+
+        [HttpPost, ActionName("XoaLoaiSanPham")]
+        public ActionResult XacNhanXoaLoaiSanPham(string id)
+        {
+            LoaiSanPham sp = data.LoaiSanPhams.SingleOrDefault(n => n.MaLoai == id);
+            ViewBag.MaLoaiSanPham = sp.MaLoai;
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            data.LoaiSanPhams.DeleteOnSubmit(sp);
+            data.SubmitChanges();
+            return RedirectToAction("LoaiSanPham");
+        }
+        //----------------------------------------------NHA SAN XUAT----------------------------------------------
+        public ActionResult NhaSanXuat()
+        {
+            return View(data.NhanSanXuats.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult ThemMoiNhaSanXuat()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ThemMoiNhaSanXuat(NhanSanXuat sp)
+        {
+            data.NhanSanXuats.InsertOnSubmit(sp);
+            data.SubmitChanges();
+            return RedirectToAction("NhaSanXuat");
+        }
+
+        public ActionResult ChiTietNhaSanXuat(string id)
+        {
+            NhanSanXuat sp = data.NhanSanXuats.SingleOrDefault(n => n.MaNhaSanXuat == id);
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(sp);
+        }
+
+        [HttpGet]
+        public ActionResult XoaNhaSanXuat(string id)
+        {
+            NhanSanXuat sp = data.NhanSanXuats.SingleOrDefault(n => n.MaNhaSanXuat == id);
+            //ViewBag.MaSanPham = sp.MaSanPham;
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(sp);
+        }
+
+        [HttpPost, ActionName("XoaNhaSanXuat")]
+        public ActionResult XacNhanXoaNhaSanXuat(string id)
+        {
+            NhanSanXuat sp = data.NhanSanXuats.SingleOrDefault(n => n.MaNhaSanXuat == id);
+            ViewBag.MaNhaSanXuat = sp.MaNhaSanXuat;
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            data.NhanSanXuats.DeleteOnSubmit(sp);
+            data.SubmitChanges();
+            return RedirectToAction("NhaSanXuat");
+        }
+        //----------------------------------------------DON HANG--------------------------------------------------
+        //----------------------------------------------TAIKHOAN-------------------------------------------------
     }
 }

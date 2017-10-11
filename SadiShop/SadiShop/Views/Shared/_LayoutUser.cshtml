@@ -51,13 +51,15 @@
 
                             <!-- LOGO -->
                             <div class="logo">
-                                <a href="~/Shop/Index"><img src="~/images/logo.png" alt="" /></a>
+                                <a href="@Url.Action("Index", "Shop")"><img src="~/images/logo.png" alt="" /></a>
                             </div><!-- //LOGO -->
                             <!-- SEARCH FORM -->
                             <div class="top_search_form">
-                                <a class="top_search_btn" href="javascript:void(0);"><i class="fa fa-search"></i></a>
-                                <form method="get" action="#">
-                                    <input type="text" name="txtTimKiem" value="Search" onFocus="if (this.value == 'Search') this.value = '';" onBlur="if (this.value == '') this.value = 'Search';" />
+                                <a class="top_search_btn" href="#"><i class="fa fa-search"></i></a>
+                                <form method="post" action="@Url.Action("KetQuaTimKiem", "Shop")">
+                                    @Html.TextBox("txtTimKiem","",htmlAttributes:new {@class="TextBoxTimKiem", @placeholder="Tìm kiếm..." })
+                                    <input type="submit" value="Tìm" style="margin-right:50px; margin-bottom:5px;" />
+                                    @*<input type="text" id="txtTimKiem" name="txtTimKiem" value="Search" onFocus="if (this.value == 'Search') this.value = '';" onBlur="if (this.value == '') this.value = 'Search';"/>*@
                                 </form>
                             </div><!-- SEARCH FORM -->
                             <!-- SHOPPING BAG -->
@@ -69,7 +71,7 @@
                             <!-- MENU -->
                             <ul class="navmenu center">
                                 <li class="last first">
-                                    <a href="~/Shop/Index">Trang chủ</a>
+                                    <a href="@Url.Action("Index", "Shop")">Trang chủ</a>
                                 </li>
                               
 
@@ -121,7 +123,7 @@
                                         </li>
                                     </ul><!-- //MEGA MENU -->
                                 </li>
-                                <li class="last sale_menu"><a href="~/Shop/Sale">Khuyến mãi</a></li>
+                                <li class="last sale_menu"><a href="@Url.Action("Sale", "Shop")">Khuyến mãi</a></li>
                             </ul><!-- //MENU -->
                         </div><!-- //MENU BLOCK -->
                     </div><!-- //CONTAINER -->
@@ -147,8 +149,8 @@
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-ss-12 padbot30">
                                 <h4>Thông tin</h4>
                                 <ul class="foot_menu">
-                                    <li><a href="~/Shop/About">Về Chúng Tôi</a></li>
-                                    <li><a href="~/Shop/LienHe">Liên hệ</a></li>
+                                    <li><a href="@Url.Action("About", "Shop")">Về Chúng Tôi</a></li>
+                                    <li><a href="@Url.Action("LienHe", "Shop")">Liên hệ</a></li>
                                 </ul>
                             </div>
 

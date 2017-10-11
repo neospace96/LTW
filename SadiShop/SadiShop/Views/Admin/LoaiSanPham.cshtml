@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SadiShop.Models.SanPham>
+﻿@model IEnumerable<SadiShop.Models.LoaiSanPham>
 
 @helper Truncate(string input, int length)
 {
@@ -11,23 +11,20 @@ else
         @input.Substring(0, length)<text>...</text>
 }
 }
-
 @{
-    ViewBag.Title = "Sản phẩm";
+    ViewBag.Title = "LoaiSanPham";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        QUẢN LÝ SẢN PHẨM
+        QUẢN LÝ LOẠI SẢN PHẨM
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>
-        <li class="active">Sản phẩm</li>
+        <li class="active">Loại Sản phẩm</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -41,11 +38,9 @@ else
                     <table id="example1" class="table table-bordered table-striped" style="text-align:center">
                         <thead>
                             <tr>
-                                <th>Ảnh SP</th>
-                                <th>Mã SP</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Thông tin sản phẩm</th>
-                                <th>Giá bán</th>
+                                <th>Mã loại sản phẩm</th>
+                                <th>Tên loại sản phẩm</th>
+                                <th>Mã loại cha</th>
                                 <th>Tùy chọn</th>
                             </tr>
                         </thead>
@@ -53,26 +48,22 @@ else
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td><img src="@Url.Content("~/images/hinhsanpham/"+ item.Hinh1)" width="70px" /></td>
-                                    <td>@Html.DisplayFor(modelItem => item.MaSanPham)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.TenSanPham)</td>
-                                    <td>@Truncate(item.Thongtin, 50)</td>
-                                    <td>@String.Format("{0:0,0}", item.GiaBan)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.MaLoai)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.TenLoai)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.MaLoaiCha)</td>
                                     <td>
-                                        @Html.ActionLink("Sửa", "SuaSanPham", new { id = item.MaSanPham }) |
-                                        @Html.ActionLink("Chi tiết", "ChiTietSanPham", new { id = item.MaSanPham }) |
-                                        @Html.ActionLink("Xóa", "XoaSanPham", new { id = item.MaSanPham })
+                                        @Html.ActionLink("Sửa", "SuaLoaiSanPham", new { id = item.MaLoai }) |
+                                        @Html.ActionLink("Chi tiết", "ChiTietLoaiSanPham", new { id = item.MaLoai }) |
+                                        @Html.ActionLink("Xóa", "XoaLoaiSanPham", new { id = item.MaLoai })
                                     </td>
                                 </tr>
                             }
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Ảnh SP</th>
-                                <th>Mã SP</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Thông tin sản phẩm</th>
-                                <th>Giá bán</th>
+                                <th>Mã loại sản phẩm</th>
+                                <th>Tên loại sản phẩm</th>
+                                <th>Mã loại cha</th>
                                 <th>Tùy chọn</th>
                             </tr>
                         </tfoot>
@@ -82,3 +73,4 @@ else
         </div><!-- /.col -->
     </div><!-- /.row -->
 </section><!-- /.content -->
+

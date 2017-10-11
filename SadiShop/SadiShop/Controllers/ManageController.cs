@@ -55,12 +55,12 @@ namespace SadiShop.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                message == ManageMessageId.ChangePasswordSuccess ? "Mật khẩu của bạn đã được thay đổi."
+                : message == ManageMessageId.SetPasswordSuccess ? "Mật khẩu của bạn đã được đặt."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.Error ? "Đã có lỗi xảy ra."
+                : message == ManageMessageId.AddPhoneSuccess ? "Số điện thoại của bạn đã được thêm."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Đã xóa số điện thoại."
                 : "";
 
             var userId = User.Identity.GetUserId();
