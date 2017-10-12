@@ -48,27 +48,31 @@ namespace SadiShop.Controllers
         //---------------------------LOẠI SẢN PHẨM TRÊN MENU ----------------------------------
         public ActionResult LoaisanphamNu()
         {
-            var loai = from l in data.LoaiSanPhams where l.MaLoaiCha == "L01" select l;
+            //var loai = from l in data.LoaiSanPhams where l.MaLoaiCha == "L01" select l;
+            var loai = data.LoaiSanPhams.Where(n => n.MaLoaiCha == "L01");
             return PartialView(loai);
         }
 
         public ActionResult LoaisanphamNam()
         {
-            var loai = from l in data.LoaiSanPhams where l.MaLoaiCha == "L02" select l;
+            //var loai = from l in data.LoaiSanPhams where l.MaLoaiCha == "L02" select l;
+            var loai = data.LoaiSanPhams.Where(n => n.MaLoaiCha == "L02");
             return PartialView(loai);
         }
 
         //----------------------------------GIÀY----------------------------------------
         public ActionResult LoaisanphamGiay()
         {
-            var loai = from l in data.LoaiSanPhams where l.MaLoaiCha == "L03" select l;
+            //var loai = from l in data.LoaiSanPhams where l.MaLoaiCha == "L03" select l;
+            var loai = data.LoaiSanPhams.Where(n => n.MaLoaiCha == "L03");
             return PartialView(loai);
         }
 
         //----------------------------------------------KHÁC--------------------------------------------
         public ActionResult LoaisanphamPhuKien()
         {
-            var loai = from l in data.LoaiSanPhams where l.MaLoaiCha == "L04" select l;
+            //var loai = from l in data.LoaiSanPhams where l.MaLoaiCha == "L04" select l;
+            var loai = data.LoaiSanPhams.Where(n => n.MaLoaiCha == "L04");
             return PartialView(loai);
         }
 
@@ -84,7 +88,8 @@ namespace SadiShop.Controllers
             ViewBag.tenloai = tenloai.TenLoai;
             //hienthisanpham
 
-            var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
+            //var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
+            var sanpham = data.SanPhams.Where(n => n.MaLoai == id);
             int sl = 0;
             foreach (var count in sanpham)
             {
@@ -102,7 +107,8 @@ namespace SadiShop.Controllers
             var tenloai = data.LoaiSanPhams.SingleOrDefault(n => n.MaLoai == id);
             ViewBag.tenloai = tenloai.TenLoai;
             //hienthisanpham
-            var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
+            //var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
+            var sanpham = data.SanPhams.Where(n => n.MaLoai == id);
             int sl = 0;
             foreach (var count in sanpham)
             {
@@ -120,7 +126,8 @@ namespace SadiShop.Controllers
             var tenloai = data.LoaiSanPhams.SingleOrDefault(n => n.MaLoai == id);
             ViewBag.tenloai = tenloai.TenLoai;
             //hienthisanpham
-            var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
+            //var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
+            var sanpham = data.SanPhams.Where(n => n.MaLoai == id);
             int sl = 0;
             foreach (var count in sanpham)
             {
@@ -138,7 +145,8 @@ namespace SadiShop.Controllers
             var tenloai = data.LoaiSanPhams.SingleOrDefault(n => n.MaLoai == id);
             ViewBag.tenloai = tenloai.TenLoai;
             //hienthisanpham
-            var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
+            //var sanpham = from sp in data.SanPhams where sp.MaLoai == id select sp;
+            var sanpham = data.SanPhams.Where(n => n.MaLoai == id);
             int sl = 0;
             foreach (var count in sanpham)
             {
@@ -165,7 +173,8 @@ namespace SadiShop.Controllers
         //--------------------------------XU HƯỚNG MỚI--------------------------------
         public ActionResult XuHuongMoi()
         {
-            var sanpham = from sp in data.SanPhams orderby sp.MaSanPham ascending select sp;
+            //var sanpham = from sp in data.SanPhams orderby sp.MaSanPham ascending select sp;
+            var sanpham = data.SanPhams.OrderBy(n => n.MaSanPham);
             return PartialView(sanpham);
         }
 
@@ -218,6 +227,7 @@ namespace SadiShop.Controllers
         [HttpGet]
         public ActionResult KetQuaTimKiem(int? page, string sTuKhoa)
         {
+            ViewBag.TuKhoa = sTuKhoa;
             List<SanPham> sp = data.SanPhams.Where(n => n.TenSanPham.Contains(sTuKhoa)).ToList();
             int pageSize = 8;
             int pageNumber = (page ?? 1);
