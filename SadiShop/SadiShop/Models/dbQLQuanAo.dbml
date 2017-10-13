@@ -77,10 +77,8 @@
   </Table>
   <Table Name="dbo.ChiTietDonDatHang" Member="ChiTietDonDatHangs">
     <Type Name="ChiTietDonDatHang">
-      <Column Name="MaDonDatHang" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaDonDatHang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaSanPham" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaMau" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaSize" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="DonDatHang_ChiTietDonDatHang" Member="DonDatHang" ThisKey="MaDonDatHang" OtherKey="MaDonDatHang" Type="DonDatHang" IsForeignKey="true" />
     </Type>
@@ -96,7 +94,7 @@
   </Table>
   <Table Name="dbo.DonDatHang" Member="DonDatHangs">
     <Type Name="DonDatHang">
-      <Column Name="MaDonDatHang" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaDonDatHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="MaTaiKhoan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="NgayDatHang" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="TenNguoiNhan" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />

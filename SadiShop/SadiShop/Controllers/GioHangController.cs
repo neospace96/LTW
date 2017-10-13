@@ -144,9 +144,8 @@ namespace SadiShop.Controllers
         public ActionResult DatHang(FormCollection collection)
         {
             DonDatHang ddh = new DonDatHang();
-            AspNetUser tt = new AspNetUser();
+            var tt = data.AspNetUsers.SingleOrDefault(n => n.Id == User.Identity.GetUserId());
             List<GioHang> gh = LayGioHang();
-            ddh.MaDonDatHang = "DDH01";
             ddh.MaTaiKhoan = User.Identity.GetUserId();
             ddh.NgayDatHang = DateTime.Now;
             ddh.TenNguoiNhan = tt.FullName;

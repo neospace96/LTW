@@ -19,7 +19,6 @@ namespace SadiShop.Models
 	using System.Linq;
 	using System.Linq.Expressions;
 	using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
 	using System;
 	
 	
@@ -1567,13 +1566,9 @@ namespace SadiShop.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _MaDonDatHang;
+		private int _MaDonDatHang;
 		
 		private string _MaSanPham;
-		
-		private string _MaMau;
-		
-		private string _MaSize;
 		
 		private System.Nullable<int> _SoLuong;
 		
@@ -1583,14 +1578,10 @@ namespace SadiShop.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaDonDatHangChanging(string value);
+    partial void OnMaDonDatHangChanging(int value);
     partial void OnMaDonDatHangChanged();
     partial void OnMaSanPhamChanging(string value);
     partial void OnMaSanPhamChanged();
-    partial void OnMaMauChanging(string value);
-    partial void OnMaMauChanged();
-    partial void OnMaSizeChanging(string value);
-    partial void OnMaSizeChanged();
     partial void OnSoLuongChanging(System.Nullable<int> value);
     partial void OnSoLuongChanged();
     #endregion
@@ -1601,8 +1592,8 @@ namespace SadiShop.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonDatHang", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaDonDatHang
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonDatHang", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int MaDonDatHang
 		{
 			get
 			{
@@ -1641,46 +1632,6 @@ namespace SadiShop.Models
 					this._MaSanPham = value;
 					this.SendPropertyChanged("MaSanPham");
 					this.OnMaSanPhamChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaMau", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaMau
-		{
-			get
-			{
-				return this._MaMau;
-			}
-			set
-			{
-				if ((this._MaMau != value))
-				{
-					this.OnMaMauChanging(value);
-					this.SendPropertyChanging();
-					this._MaMau = value;
-					this.SendPropertyChanged("MaMau");
-					this.OnMaMauChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaSize", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaSize
-		{
-			get
-			{
-				return this._MaSize;
-			}
-			set
-			{
-				if ((this._MaSize != value))
-				{
-					this.OnMaSizeChanging(value);
-					this.SendPropertyChanging();
-					this._MaSize = value;
-					this.SendPropertyChanged("MaSize");
-					this.OnMaSizeChanged();
 				}
 			}
 		}
@@ -1732,7 +1683,7 @@ namespace SadiShop.Models
 					}
 					else
 					{
-						this._MaDonDatHang = default(string);
+						this._MaDonDatHang = default(int);
 					}
 					this.SendPropertyChanged("DonDatHang");
 				}
@@ -1829,7 +1780,7 @@ namespace SadiShop.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _MaDonDatHang;
+		private int _MaDonDatHang;
 		
 		private string _MaTaiKhoan;
 		
@@ -1849,7 +1800,7 @@ namespace SadiShop.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaDonDatHangChanging(string value);
+    partial void OnMaDonDatHangChanging(int value);
     partial void OnMaDonDatHangChanged();
     partial void OnMaTaiKhoanChanging(string value);
     partial void OnMaTaiKhoanChanged();
@@ -1871,8 +1822,8 @@ namespace SadiShop.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonDatHang", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaDonDatHang
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonDatHang", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MaDonDatHang
 		{
 			get
 			{
