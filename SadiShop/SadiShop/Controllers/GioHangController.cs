@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SadiShop.Models;
+using Microsoft.AspNet.Identity;
 
 namespace SadiShop.Controllers
 {
@@ -138,6 +139,44 @@ namespace SadiShop.Controllers
             ViewBag.TongSoLuong = TongSoLuong();
             ViewBag.TongTien = TongTien();
             return View(lstGioHang);
+        }
+
+        public ActionResult DatHang(FormCollection collection)
+        {
+            DonDatHang ddh = new DonDatHang();
+            AspNetUser tt = new AspNetUser();
+            List<GioHang> gh = LayGioHang();
+            ddh.MaDonDatHang = "DDH01";
+            ddh.MaTaiKhoan = User.Identity.GetUserId();
+            ddh.NgayDatHang = DateTime.Now;
+            ddh.TenNguoiNhan = tt.FullName;
+            ddh.DiaChi = tt.Address;
+            ddh.DienThoai = tt.PhoneNumber;
+            data.DonDatHangs.InsertOnSubmit(ddh);
+            data.SubmitChanges();
+            foreach(var item in gh)
+            {
+                ChiTietDonDatHang ctdh = new ChiTietDonDatHang();
+                ctdh.MaDonDatHang = ddh.MaDonDatHang;
+                ctdh.MaSanPham = item.sMaSanPham;
+                ctdh.SoLuong = item.iSoLuong;
+                data.ChiTietDonDatHangs.InsertOnSubmit(ctdh);
+            }
+            data.SubmitChanges();
+            Session["GioHang"] = null;
+            return RedirectToAction("XacNhanDonHang", "GioHang");
+
+        }
+
+        public ActionResult XacNhanDonHang()
+        {
+            return View();
+        }
+
+        public ActionResult ThongTinKhachHang()
+        {
+            var user = data.AspNetUsers.SingleOrDefault(n => n.Id == User.Identity.GetUserId());
+            return PartialView(user);
         }
 
 

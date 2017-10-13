@@ -208,6 +208,14 @@
     <Compile Include="Migrations\201710101012213_adddata.Designer.cs">
       <DependentUpon>201710101012213_adddata.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710131728469_add2.cs" />
+    <Compile Include="Migrations\201710131728469_add2.Designer.cs">
+      <DependentUpon>201710131728469_add2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710131730558_add3.cs" />
+    <Compile Include="Migrations\201710131730558_add3.Designer.cs">
+      <DependentUpon>201710131730558_add3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\dbQLQuanAo.designer.cs">
@@ -2301,6 +2309,8 @@
     <Content Include="Views\Admin\ChiTietNhaSanXuat.cshtml" />
     <Content Include="Views\Admin\XoaNhaSanXuat.cshtml" />
     <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\GioHang\ThongTinKhachHang.cshtml" />
+    <Content Include="Views\GioHang\XacNhanDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -2308,6 +2318,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710101012213_adddata.resx">
       <DependentUpon>201710101012213_adddata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710131728469_add2.resx">
+      <DependentUpon>201710131728469_add2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710131730558_add3.resx">
+      <DependentUpon>201710131730558_add3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

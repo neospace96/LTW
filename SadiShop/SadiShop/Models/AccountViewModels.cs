@@ -65,6 +65,11 @@ namespace SadiShop.Models
     public class RegisterViewModel
     {
         [Required]
+        [StringLength(255)]
+        [Display(Name = "Họ và tên")]
+        public string FullName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -79,6 +84,15 @@ namespace SadiShop.Models
         [Display(Name = "Nhập lại mật khẩu")]
         [Compare("Password", ErrorMessage = "Xác nhận mật khẩu không trùng khớp với nhau")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(255)]
+        [Display(Name = "Địa chỉ")]
+        public string Address { get; set; }
+
+        [Required]
+        [Display(Name = "Số điện thoại")]
+        public string PhoneNumber { get; set; }
     }
 
     public class ResetPasswordViewModel

@@ -19,6 +19,7 @@ namespace SadiShop.Models
 	using System.Linq;
 	using System.Linq.Expressions;
 	using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 	using System;
 	
 	
@@ -69,7 +70,7 @@ namespace SadiShop.Models
     #endregion
 		
 		public dbQLQuanAoDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QLQuanAoConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QLQuanAoConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1132,6 +1133,10 @@ namespace SadiShop.Models
 		
 		private string _UserName;
 		
+		private string _FullName;
+		
+		private string _Address;
+		
 		private EntitySet<AspNetUserClaim> _AspNetUserClaims;
 		
 		private EntitySet<AspNetUserLogin> _AspNetUserLogins;
@@ -1166,6 +1171,10 @@ namespace SadiShop.Models
     partial void OnAccessFailedCountChanged();
     partial void OnUserNameChanging(string value);
     partial void OnUserNameChanged();
+    partial void OnFullNameChanging(string value);
+    partial void OnFullNameChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
     #endregion
 		
 		public AspNetUser()
@@ -1412,6 +1421,46 @@ namespace SadiShop.Models
 					this._UserName = value;
 					this.SendPropertyChanged("UserName");
 					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FullName", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string FullName
+		{
+			get
+			{
+				return this._FullName;
+			}
+			set
+			{
+				if ((this._FullName != value))
+				{
+					this.OnFullNameChanging(value);
+					this.SendPropertyChanging();
+					this._FullName = value;
+					this.SendPropertyChanged("FullName");
+					this.OnFullNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
 				}
 			}
 		}
