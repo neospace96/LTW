@@ -45,15 +45,15 @@
                     </div><!-- //TOVAR WRAPPER -->
                     <div class="respond_clear_768"></div>
                 </div><!-- //ROW -->
-                <hr />
+                <hr/>
                 Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
                 <div class="clearfix">
                     <!-- PAGINATION -->
                     <ul class="pagination">
-                        @Html.PagedListPager(Model, page => Url.Action("KetQuaTimKiem", new { page = page, @sTuKhoa = ViewBag.TuKhoa }))
+                        @Html.PagedListPager(Model, page => Url.Action("KetQuaTimKiem", new { page = page }))
                     </ul><!-- //PAGINATION -->
                 </div>
-                <hr />
+            <hr />
                 <div class="respond_clear_768"></div>
             </div><!-- //CONTAINER -->
 

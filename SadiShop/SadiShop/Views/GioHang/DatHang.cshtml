@@ -1,4 +1,4 @@
-﻿@using SadiShop.Models
+﻿
 @{
     ViewBag.Title = "DatHang";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
@@ -62,16 +62,6 @@
             <h1 style="text-align:center">
                 THÔNG TIN ĐẶT HÀNG
             </h1>
-        @{ 
-            AspNetUser user = SadiShop.asp
-        }
-            <table align="center">
-                @using (Html.BeginForm())
-                {
-                    @Html.ValidationSummary(true)
-                    @user.Id
-                }
-            </table>
         </section><!-- //SHOPPING BAG BLOCK -->
     </div>
 </div>
