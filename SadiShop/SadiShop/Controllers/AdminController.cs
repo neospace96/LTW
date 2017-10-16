@@ -120,6 +120,7 @@ namespace SadiShop.Controllers
         public ActionResult XacNhanXoaSanPham(string id)
         {
             SanPham sp = data.SanPhams.SingleOrDefault(n => n.MaSanPham == id);
+            ViewBag.Anh = sp.Hinh1;
             ViewBag.MaSanPham = sp.MaSanPham;
             if (sp == null)
             {
@@ -149,16 +150,18 @@ namespace SadiShop.Controllers
         [ValidateInput(false)]
         public ActionResult SuaSanPham(SanPham sp, HttpPostedFileBase fileUpload)
         {
-            ViewBag.MaLoai = new SelectList(data.LoaiSanPhams.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
-            ViewBag.MaNhaSanXuat = new SelectList(data.NhanSanXuats.ToList().OrderBy(n => n.TenNhaSanXuat), "MaNhaSanXuat", "TenNhaSanXuat");
-            if (fileUpload == null)
+
+            if (ModelState.IsValid)
             {
-                ViewBag.ThongBao = "Vui lòng chọn hình sản phẩm";
-                return View();
-            }
-            else
-            {
-                if (ModelState.IsValid)
+
+
+                SanPham sp1 = data.SanPhams.SingleOrDefault(n => n.MaSanPham == sp.MaSanPham);
+                if (sp1 == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                if (fileUpload != null)
                 {
                     var fileName = Path.GetFileName(fileUpload.FileName);
                     var path = Path.Combine(Server.MapPath("~/images/hinhsanpham/"), fileName);
@@ -169,13 +172,14 @@ namespace SadiShop.Controllers
                     else
                     {
                         fileUpload.SaveAs(path);
+                        sp1.Hinh1 = fileName;
                     }
-                    sp.Hinh1 = fileName;
-                    UpdateModel(sp);
-                    data.SubmitChanges();
                 }
-                return RedirectToAction("SanPham");
+                sp1.TenSanPham = sp.TenSanPham;
+                UpdateModel(sp1);
+                data.SubmitChanges();
             }
+            return RedirectToAction("SanPham");
         }
 
         //----------------------------------------------LOAI SAN PHAM---------------------------------------------

@@ -218,6 +218,7 @@ namespace SadiShop.Controllers
         [HttpGet]
         public ActionResult KetQuaTimKiem(int? page, string sTuKhoa)
         {
+            ViewBag.TuKhoa = sTuKhoa;
             List<SanPham> sp = data.SanPhams.Where(n => n.TenSanPham.Contains(sTuKhoa)).ToList();
             int pageSize = 8;
             int pageNumber = (page ?? 1);

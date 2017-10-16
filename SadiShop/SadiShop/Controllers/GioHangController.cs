@@ -151,6 +151,7 @@ namespace SadiShop.Controllers
             ddh.TenNguoiNhan = tt.FullName;
             ddh.DiaChi = tt.Address;
             ddh.DienThoai = tt.PhoneNumber;
+            ddh.ThanhTien = TongTien();
             data.DonDatHangs.InsertOnSubmit(ddh);
             data.SubmitChanges();
             foreach(var item in gh)
@@ -172,12 +173,19 @@ namespace SadiShop.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult ThongTinKhachHang()
         {
             var user = data.AspNetUsers.SingleOrDefault(n => n.Id == User.Identity.GetUserId());
             return PartialView(user);
         }
 
+        //[HttpPost]
+        //public ActionResult ThongTinKhachHang(AspNetUser user)
+        //{
+        //    UpdateModel(user);
+        //    data.SubmitChanges();
+        //}
 
     }
 }
