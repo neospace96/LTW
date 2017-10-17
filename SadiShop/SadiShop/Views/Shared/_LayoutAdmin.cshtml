@@ -151,7 +151,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li><a href="@Url.Action("ThemMoiNhaSanXuat", "Admin")">Thêm nhà sản xuất mới</a></li>
                         </ul>
                     </li>
-                    <li><a href="@Url.Action("DonHang", "Admin")" )><i class="fa fa-credit-card"></i> <span>Đơn hàng</span></a></li>
+                    <li class="treeview">
+                        <a href="#"><i class="fa  fa-cart-plus"></i> <span>Đơn hàng</span> <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("QuanLyDonHangChuaDyet", "Admin")">Danh sách đơn hàng chưa duyệt</a></li>
+                            <li><a href="@Url.Action("QuanLyDonHangDaDyet", "Admin")">Danh sách đơn hàng đã duyệt</a></li>
+                        </ul>
+                    </li>
                 </ul><!-- /.sidebar-menu -->
             </section>
             <!-- /.sidebar -->
@@ -229,5 +235,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             });
         });
     </script>
+    <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
 </body>
 </html>

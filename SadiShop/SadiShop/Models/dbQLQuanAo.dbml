@@ -8,11 +8,11 @@
       <Column Name="ProductVersion" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.Size" Member="Sizes">
-    <Type Name="Size">
-      <Column Name="MaSize" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenSize" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="Size_ChiTietSanPham" Member="ChiTietSanPhams" ThisKey="MaSize" OtherKey="MaSize" Type="ChiTietSanPham" />
+  <Table Name="dbo.TinhTrang" Member="TinhTrangs">
+    <Type Name="TinhTrang">
+      <Column Name="MaTinhTrang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenTinhTrang" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="TinhTrang_DonDatHang" Member="DonDatHangs" ThisKey="MaTinhTrang" OtherKey="MaTinhTrang" Type="DonDatHang" />
     </Type>
   </Table>
   <Table Name="dbo.Admin" Member="Admins">
@@ -73,6 +73,7 @@
       <Association Name="AspNetUser_AspNetUserClaim" Member="AspNetUserClaims" ThisKey="Id" OtherKey="UserId" Type="AspNetUserClaim" />
       <Association Name="AspNetUser_AspNetUserLogin" Member="AspNetUserLogins" ThisKey="Id" OtherKey="UserId" Type="AspNetUserLogin" />
       <Association Name="AspNetUser_AspNetUserRole" Member="AspNetUserRoles" ThisKey="Id" OtherKey="UserId" Type="AspNetUserRole" />
+      <Association Name="AspNetUser_DonDatHang" Member="DonDatHangs" ThisKey="Id" OtherKey="MaTaiKhoan" Type="DonDatHang" />
     </Type>
   </Table>
   <Table Name="dbo.ChiTietDonDatHang" Member="ChiTietDonDatHangs">
@@ -81,6 +82,7 @@
       <Column Name="MaSanPham" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="DonDatHang_ChiTietDonDatHang" Member="DonDatHang" ThisKey="MaDonDatHang" OtherKey="MaDonDatHang" Type="DonDatHang" IsForeignKey="true" />
+      <Association Name="SanPham_ChiTietDonDatHang" Member="SanPham" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="SanPham" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ChiTietSanPham" Member="ChiTietSanPhams">
@@ -88,20 +90,20 @@
       <Column Name="MaSanPham" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="MaSize" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Size_ChiTietSanPham" Member="Size" ThisKey="MaSize" OtherKey="MaSize" Type="Size" IsForeignKey="true" />
       <Association Name="SanPham_ChiTietSanPham" Member="SanPham" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="SanPham" IsForeignKey="true" />
+      <Association Name="Size_ChiTietSanPham" Member="Size" ThisKey="MaSize" OtherKey="MaSize" Type="Size" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DonDatHang" Member="DonDatHangs">
     <Type Name="DonDatHang">
       <Column Name="MaDonDatHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MaTaiKhoan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaTaiKhoan" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
       <Column Name="NgayDatHang" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="TenNguoiNhan" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="DienThoai" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="ThanhTien" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MaTinhTrang" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="DonDatHang_ChiTietDonDatHang" Member="ChiTietDonDatHangs" ThisKey="MaDonDatHang" OtherKey="MaDonDatHang" Type="ChiTietDonDatHang" />
+      <Association Name="AspNetUser_DonDatHang" Member="AspNetUser" ThisKey="MaTaiKhoan" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" />
+      <Association Name="TinhTrang_DonDatHang" Member="TinhTrang" ThisKey="MaTinhTrang" OtherKey="MaTinhTrang" Type="TinhTrang" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.LoaiSanPham" Member="LoaiSanPhams">
@@ -132,9 +134,17 @@
       <Column Name="Hinh2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="Hinh3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="Hinh4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="SanPham_ChiTietDonDatHang" Member="ChiTietDonDatHangs" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="ChiTietDonDatHang" />
       <Association Name="SanPham_ChiTietSanPham" Member="ChiTietSanPhams" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="ChiTietSanPham" />
       <Association Name="LoaiSanPham_SanPham" Member="LoaiSanPham" ThisKey="MaLoai" OtherKey="MaLoai" Type="LoaiSanPham" IsForeignKey="true" />
       <Association Name="NhanSanXuat_SanPham" Member="NhanSanXuat" ThisKey="MaNhaSanXuat" OtherKey="MaNhaSanXuat" Type="NhanSanXuat" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Size" Member="Sizes">
+    <Type Name="Size">
+      <Column Name="MaSize" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenSize" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Size_ChiTietSanPham" Member="ChiTietSanPhams" ThisKey="MaSize" OtherKey="MaSize" Type="ChiTietSanPham" />
     </Type>
   </Table>
 </Database>

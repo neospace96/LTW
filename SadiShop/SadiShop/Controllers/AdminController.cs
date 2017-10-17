@@ -303,6 +303,53 @@ namespace SadiShop.Controllers
             return RedirectToAction("NhaSanXuat");
         }
         //----------------------------------------------DON HANG--------------------------------------------------
+        public ActionResult QuanLyDonHangChuaDyet()
+        {
+            return View(data.DonDatHangs.Where(n => n.MaTinhTrang == 1).ToList());
+        }
+
+        public ActionResult DaDuyet(int MaDonDatHang = 0)
+        {
+            DonDatHang ddh = data.DonDatHangs.SingleOrDefault(n => n.MaDonDatHang == MaDonDatHang);
+            if(ddh == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            ddh.MaTinhTrang = 2;
+            data.SubmitChanges();
+            return Redirect("QuanLyDonHangChuaDyet");
+        }
+
+        public ActionResult QuanLyDonHangDaDyet()
+        {
+            return View(data.DonDatHangs.Where(n => n.MaTinhTrang != 1 && n.MaTinhTrang!=4).ToList());
+        }
+
+        public ActionResult DaDuyet1(int MaDonDatHang = 0)
+        {
+            DonDatHang ddh = data.DonDatHangs.SingleOrDefault(n => n.MaDonDatHang == MaDonDatHang);
+            if (ddh == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            ddh.MaTinhTrang = 3;
+            data.SubmitChanges();
+            return Redirect("QuanLyDonHangDaDyet");
+        }
+
+        public ActionResult ChiTietDonHang(int id)
+        {
+            var sp = data.ChiTietDonDatHangs.Where(n => n.MaDonDatHang == id).ToList();
+            //ViewBag.MaSanPham = sp.MaSanPham;
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(sp);
+        }
         //----------------------------------------------TAIKHOAN-------------------------------------------------
     }
 }

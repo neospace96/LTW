@@ -7,8 +7,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SadiShop.Models;
+using SadiShop;
+using SadiShop.Controllers;
 
-namespace SadiShop.Controllers
+namespace BanMayTinh.Controllers
 {
     [Authorize]
     public class ManageController : Controller
@@ -32,9 +34,9 @@ namespace SadiShop.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -55,12 +57,12 @@ namespace SadiShop.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Mật khẩu của bạn đã được thay đổi."
-                : message == ManageMessageId.SetPasswordSuccess ? "Mật khẩu của bạn đã được đặt."
+                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "Đã có lỗi xảy ra."
-                : message == ManageMessageId.AddPhoneSuccess ? "Số điện thoại của bạn đã được thêm."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Đã xóa số điện thoại."
+                : message == ManageMessageId.Error ? "An error has occurred."
+                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : "";
 
             var userId = User.Identity.GetUserId();
@@ -333,7 +335,7 @@ namespace SadiShop.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -384,6 +386,34 @@ namespace SadiShop.Controllers
             Error
         }
 
-#endregion
+        #endregion
+        dbQLQuanAoDataContext data = new dbQLQuanAoDataContext();
+        [Authorize]
+        public ActionResult ThongTinKhachHang()
+        {
+            var tt = data.AspNetUsers.SingleOrDefault(n => n.Id == User.Identity.GetUserId());
+            if (tt == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(tt);
+        }
+
+        [HttpPost]
+        public ActionResult ThongTinKhachHang(AspNetUser user)
+        {
+            var user1 = data.AspNetUsers.SingleOrDefault(n => n.Id == user.Id);
+            if (user1 == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            user1.FullName = user.FullName;
+            user1.PhoneNumber = user.PhoneNumber;
+            user1.Address = user.Address;
+            data.SubmitChanges();
+            return Redirect("Index");
+        }
     }
 }

@@ -15,8 +15,8 @@
         </ul>
         <div class="cart_total">
             <div class="clearfix"><span class="cart_subtotal">Tổng tiền: <b>@String.Format("{0:0,0}", @ViewBag.Tongtien) VNĐ</b></span></div>
-            <a class="btn active" href="~/GioHang/GioHang">Chi tiết giỏ hàng</a>
+            <a class="btn active" href="@Url.Action("GioHang", "GioHang")">Chi tiết giỏ hàng</a>
             <div class="clearfix"></div>
-            <a class="btn active" href="@Url.Action("DatHang", "GioHang")">Thanh toán</a>
+            <a class="btn active" href="@Url.Action("ThongTinKhachHang", "GioHang")">Thanh toán</a>
         </div>
     </div>

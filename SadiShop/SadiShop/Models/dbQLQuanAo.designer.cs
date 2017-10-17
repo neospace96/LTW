@@ -20,9 +20,9 @@ namespace SadiShop.Models
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-	
-	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QLQuanAo")]
+    using System.ComponentModel.DataAnnotations;
+
+    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QLQuanAo")]
 	public partial class dbQLQuanAoDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -33,9 +33,9 @@ namespace SadiShop.Models
     partial void Insert__MigrationHistory(__MigrationHistory instance);
     partial void Update__MigrationHistory(__MigrationHistory instance);
     partial void Delete__MigrationHistory(__MigrationHistory instance);
-    partial void InsertSize(Size instance);
-    partial void UpdateSize(Size instance);
-    partial void DeleteSize(Size instance);
+    partial void InsertTinhTrang(TinhTrang instance);
+    partial void UpdateTinhTrang(TinhTrang instance);
+    partial void DeleteTinhTrang(TinhTrang instance);
     partial void InsertAspNetRole(AspNetRole instance);
     partial void UpdateAspNetRole(AspNetRole instance);
     partial void DeleteAspNetRole(AspNetRole instance);
@@ -66,6 +66,9 @@ namespace SadiShop.Models
     partial void InsertSanPham(SanPham instance);
     partial void UpdateSanPham(SanPham instance);
     partial void DeleteSanPham(SanPham instance);
+    partial void InsertSize(Size instance);
+    partial void UpdateSize(Size instance);
+    partial void DeleteSize(Size instance);
     #endregion
 		
 		public dbQLQuanAoDataContext() : 
@@ -106,11 +109,11 @@ namespace SadiShop.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Size> Sizes
+		public System.Data.Linq.Table<TinhTrang> TinhTrangs
 		{
 			get
 			{
-				return this.GetTable<Size>();
+				return this.GetTable<TinhTrang>();
 			}
 		}
 		
@@ -207,6 +210,14 @@ namespace SadiShop.Models
 			get
 			{
 				return this.GetTable<SanPham>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Size> Sizes
+		{
+			get
+			{
+				return this.GetTable<Size>();
 			}
 		}
 	}
@@ -345,68 +356,84 @@ namespace SadiShop.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Size")]
-	public partial class Size : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TinhTrang")]
+	public partial class TinhTrang : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _MaSize;
+		private int _MaTinhTrang;
 		
-		private string _TenSize;
+		private string _TenTinhTrang;
+		
+		private EntitySet<DonDatHang> _DonDatHangs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaSizeChanging(string value);
-    partial void OnMaSizeChanged();
-    partial void OnTenSizeChanging(string value);
-    partial void OnTenSizeChanged();
+    partial void OnMaTinhTrangChanging(int value);
+    partial void OnMaTinhTrangChanged();
+    partial void OnTenTinhTrangChanging(string value);
+    partial void OnTenTinhTrangChanged();
     #endregion
 		
-		public Size()
+		public TinhTrang()
 		{
+			this._DonDatHangs = new EntitySet<DonDatHang>(new Action<DonDatHang>(this.attach_DonDatHangs), new Action<DonDatHang>(this.detach_DonDatHangs));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaSize", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaSize
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTinhTrang", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int MaTinhTrang
 		{
 			get
 			{
-				return this._MaSize;
+				return this._MaTinhTrang;
 			}
 			set
 			{
-				if ((this._MaSize != value))
+				if ((this._MaTinhTrang != value))
 				{
-					this.OnMaSizeChanging(value);
+					this.OnMaTinhTrangChanging(value);
 					this.SendPropertyChanging();
-					this._MaSize = value;
-					this.SendPropertyChanged("MaSize");
-					this.OnMaSizeChanged();
+					this._MaTinhTrang = value;
+					this.SendPropertyChanged("MaTinhTrang");
+					this.OnMaTinhTrangChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenSize", DbType="VarChar(50)")]
-		public string TenSize
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenTinhTrang", DbType="NVarChar(50)")]
+		public string TenTinhTrang
 		{
 			get
 			{
-				return this._TenSize;
+				return this._TenTinhTrang;
 			}
 			set
 			{
-				if ((this._TenSize != value))
+				if ((this._TenTinhTrang != value))
 				{
-					this.OnTenSizeChanging(value);
+					this.OnTenTinhTrangChanging(value);
 					this.SendPropertyChanging();
-					this._TenSize = value;
-					this.SendPropertyChanged("TenSize");
-					this.OnTenSizeChanged();
+					this._TenTinhTrang = value;
+					this.SendPropertyChanged("TenTinhTrang");
+					this.OnTenTinhTrangChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TinhTrang_DonDatHang", Storage="_DonDatHangs", ThisKey="MaTinhTrang", OtherKey="MaTinhTrang")]
+		public EntitySet<DonDatHang> DonDatHangs
+		{
+			get
+			{
+				return this._DonDatHangs;
+			}
+			set
+			{
+				this._DonDatHangs.Assign(value);
 			}
 		}
 		
@@ -428,6 +455,18 @@ namespace SadiShop.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_DonDatHangs(DonDatHang entity)
+		{
+			this.SendPropertyChanging();
+			entity.TinhTrang = this;
+		}
+		
+		private void detach_DonDatHangs(DonDatHang entity)
+		{
+			this.SendPropertyChanging();
+			entity.TinhTrang = null;
 		}
 	}
 	
@@ -1131,8 +1170,8 @@ namespace SadiShop.Models
 		private int _AccessFailedCount;
 		
 		private string _UserName;
-		
-		private string _FullName;
+
+        private string _FullName;
 		
 		private string _Address;
 		
@@ -1141,6 +1180,8 @@ namespace SadiShop.Models
 		private EntitySet<AspNetUserLogin> _AspNetUserLogins;
 		
 		private EntitySet<AspNetUserRole> _AspNetUserRoles;
+		
+		private EntitySet<DonDatHang> _DonDatHangs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1181,6 +1222,7 @@ namespace SadiShop.Models
 			this._AspNetUserClaims = new EntitySet<AspNetUserClaim>(new Action<AspNetUserClaim>(this.attach_AspNetUserClaims), new Action<AspNetUserClaim>(this.detach_AspNetUserClaims));
 			this._AspNetUserLogins = new EntitySet<AspNetUserLogin>(new Action<AspNetUserLogin>(this.attach_AspNetUserLogins), new Action<AspNetUserLogin>(this.detach_AspNetUserLogins));
 			this._AspNetUserRoles = new EntitySet<AspNetUserRole>(new Action<AspNetUserRole>(this.attach_AspNetUserRoles), new Action<AspNetUserRole>(this.detach_AspNetUserRoles));
+			this._DonDatHangs = new EntitySet<DonDatHang>(new Action<DonDatHang>(this.attach_DonDatHangs), new Action<DonDatHang>(this.detach_DonDatHangs));
 			OnCreated();
 		}
 		
@@ -1425,7 +1467,7 @@ namespace SadiShop.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FullName", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string FullName
+        public string FullName
 		{
 			get
 			{
@@ -1503,6 +1545,19 @@ namespace SadiShop.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AspNetUser_DonDatHang", Storage="_DonDatHangs", ThisKey="Id", OtherKey="MaTaiKhoan")]
+		public EntitySet<DonDatHang> DonDatHangs
+		{
+			get
+			{
+				return this._DonDatHangs;
+			}
+			set
+			{
+				this._DonDatHangs.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1558,6 +1613,18 @@ namespace SadiShop.Models
 			this.SendPropertyChanging();
 			entity.AspNetUser = null;
 		}
+		
+		private void attach_DonDatHangs(DonDatHang entity)
+		{
+			this.SendPropertyChanging();
+			entity.AspNetUser = this;
+		}
+		
+		private void detach_DonDatHangs(DonDatHang entity)
+		{
+			this.SendPropertyChanging();
+			entity.AspNetUser = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ChiTietDonDatHang")]
@@ -1574,6 +1641,8 @@ namespace SadiShop.Models
 		
 		private EntityRef<DonDatHang> _DonDatHang;
 		
+		private EntityRef<SanPham> _SanPham;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1589,6 +1658,7 @@ namespace SadiShop.Models
 		public ChiTietDonDatHang()
 		{
 			this._DonDatHang = default(EntityRef<DonDatHang>);
+			this._SanPham = default(EntityRef<SanPham>);
 			OnCreated();
 		}
 		
@@ -1627,6 +1697,10 @@ namespace SadiShop.Models
 			{
 				if ((this._MaSanPham != value))
 				{
+					if (this._SanPham.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaSanPhamChanging(value);
 					this.SendPropertyChanging();
 					this._MaSanPham = value;
@@ -1686,6 +1760,40 @@ namespace SadiShop.Models
 						this._MaDonDatHang = default(int);
 					}
 					this.SendPropertyChanged("DonDatHang");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SanPham_ChiTietDonDatHang", Storage="_SanPham", ThisKey="MaSanPham", OtherKey="MaSanPham", IsForeignKey=true)]
+		public SanPham SanPham
+		{
+			get
+			{
+				return this._SanPham.Entity;
+			}
+			set
+			{
+				SanPham previousValue = this._SanPham.Entity;
+				if (((previousValue != value) 
+							|| (this._SanPham.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SanPham.Entity = null;
+						previousValue.ChiTietDonDatHangs.Remove(this);
+					}
+					this._SanPham.Entity = value;
+					if ((value != null))
+					{
+						value.ChiTietDonDatHangs.Add(this);
+						this._MaSanPham = value.MaSanPham;
+					}
+					else
+					{
+						this._MaSanPham = default(string);
+					}
+					this.SendPropertyChanged("SanPham");
 				}
 			}
 		}
@@ -1786,15 +1894,15 @@ namespace SadiShop.Models
 		
 		private System.Nullable<System.DateTime> _NgayDatHang;
 		
-		private string _TenNguoiNhan;
-		
-		private string _DiaChi;
-		
-		private string _DienThoai;
-		
 		private System.Nullable<double> _ThanhTien;
 		
+		private System.Nullable<int> _MaTinhTrang;
+		
 		private EntitySet<ChiTietDonDatHang> _ChiTietDonDatHangs;
+		
+		private EntityRef<AspNetUser> _AspNetUser;
+		
+		private EntityRef<TinhTrang> _TinhTrang;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1806,19 +1914,17 @@ namespace SadiShop.Models
     partial void OnMaTaiKhoanChanged();
     partial void OnNgayDatHangChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayDatHangChanged();
-    partial void OnTenNguoiNhanChanging(string value);
-    partial void OnTenNguoiNhanChanged();
-    partial void OnDiaChiChanging(string value);
-    partial void OnDiaChiChanged();
-    partial void OnDienThoaiChanging(string value);
-    partial void OnDienThoaiChanged();
     partial void OnThanhTienChanging(System.Nullable<double> value);
     partial void OnThanhTienChanged();
+    partial void OnMaTinhTrangChanging(System.Nullable<int> value);
+    partial void OnMaTinhTrangChanged();
     #endregion
 		
 		public DonDatHang()
 		{
 			this._ChiTietDonDatHangs = new EntitySet<ChiTietDonDatHang>(new Action<ChiTietDonDatHang>(this.attach_ChiTietDonDatHangs), new Action<ChiTietDonDatHang>(this.detach_ChiTietDonDatHangs));
+			this._AspNetUser = default(EntityRef<AspNetUser>);
+			this._TinhTrang = default(EntityRef<TinhTrang>);
 			OnCreated();
 		}
 		
@@ -1842,7 +1948,7 @@ namespace SadiShop.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTaiKhoan", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTaiKhoan", DbType="NVarChar(128)")]
 		public string MaTaiKhoan
 		{
 			get
@@ -1853,6 +1959,10 @@ namespace SadiShop.Models
 			{
 				if ((this._MaTaiKhoan != value))
 				{
+					if (this._AspNetUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaTaiKhoanChanging(value);
 					this.SendPropertyChanging();
 					this._MaTaiKhoan = value;
@@ -1882,66 +1992,6 @@ namespace SadiShop.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenNguoiNhan", DbType="NVarChar(100)")]
-		public string TenNguoiNhan
-		{
-			get
-			{
-				return this._TenNguoiNhan;
-			}
-			set
-			{
-				if ((this._TenNguoiNhan != value))
-				{
-					this.OnTenNguoiNhanChanging(value);
-					this.SendPropertyChanging();
-					this._TenNguoiNhan = value;
-					this.SendPropertyChanged("TenNguoiNhan");
-					this.OnTenNguoiNhanChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(100)")]
-		public string DiaChi
-		{
-			get
-			{
-				return this._DiaChi;
-			}
-			set
-			{
-				if ((this._DiaChi != value))
-				{
-					this.OnDiaChiChanging(value);
-					this.SendPropertyChanging();
-					this._DiaChi = value;
-					this.SendPropertyChanged("DiaChi");
-					this.OnDiaChiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DienThoai", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-		public string DienThoai
-		{
-			get
-			{
-				return this._DienThoai;
-			}
-			set
-			{
-				if ((this._DienThoai != value))
-				{
-					this.OnDienThoaiChanging(value);
-					this.SendPropertyChanging();
-					this._DienThoai = value;
-					this.SendPropertyChanged("DienThoai");
-					this.OnDienThoaiChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThanhTien", DbType="Float")]
 		public System.Nullable<double> ThanhTien
 		{
@@ -1962,6 +2012,30 @@ namespace SadiShop.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTinhTrang", DbType="Int")]
+		public System.Nullable<int> MaTinhTrang
+		{
+			get
+			{
+				return this._MaTinhTrang;
+			}
+			set
+			{
+				if ((this._MaTinhTrang != value))
+				{
+					if (this._TinhTrang.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaTinhTrangChanging(value);
+					this.SendPropertyChanging();
+					this._MaTinhTrang = value;
+					this.SendPropertyChanged("MaTinhTrang");
+					this.OnMaTinhTrangChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonDatHang_ChiTietDonDatHang", Storage="_ChiTietDonDatHangs", ThisKey="MaDonDatHang", OtherKey="MaDonDatHang")]
 		public EntitySet<ChiTietDonDatHang> ChiTietDonDatHangs
 		{
@@ -1972,6 +2046,74 @@ namespace SadiShop.Models
 			set
 			{
 				this._ChiTietDonDatHangs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AspNetUser_DonDatHang", Storage="_AspNetUser", ThisKey="MaTaiKhoan", OtherKey="Id", IsForeignKey=true)]
+		public AspNetUser AspNetUser
+		{
+			get
+			{
+				return this._AspNetUser.Entity;
+			}
+			set
+			{
+				AspNetUser previousValue = this._AspNetUser.Entity;
+				if (((previousValue != value) 
+							|| (this._AspNetUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._AspNetUser.Entity = null;
+						previousValue.DonDatHangs.Remove(this);
+					}
+					this._AspNetUser.Entity = value;
+					if ((value != null))
+					{
+						value.DonDatHangs.Add(this);
+						this._MaTaiKhoan = value.Id;
+					}
+					else
+					{
+						this._MaTaiKhoan = default(string);
+					}
+					this.SendPropertyChanged("AspNetUser");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TinhTrang_DonDatHang", Storage="_TinhTrang", ThisKey="MaTinhTrang", OtherKey="MaTinhTrang", IsForeignKey=true)]
+		public TinhTrang TinhTrang
+		{
+			get
+			{
+				return this._TinhTrang.Entity;
+			}
+			set
+			{
+				TinhTrang previousValue = this._TinhTrang.Entity;
+				if (((previousValue != value) 
+							|| (this._TinhTrang.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TinhTrang.Entity = null;
+						previousValue.DonDatHangs.Remove(this);
+					}
+					this._TinhTrang.Entity = value;
+					if ((value != null))
+					{
+						value.DonDatHangs.Add(this);
+						this._MaTinhTrang = value.MaTinhTrang;
+					}
+					else
+					{
+						this._MaTinhTrang = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TinhTrang");
+				}
 			}
 		}
 		
@@ -2310,6 +2452,8 @@ namespace SadiShop.Models
 		
 		private string _Hinh4;
 		
+		private EntitySet<ChiTietDonDatHang> _ChiTietDonDatHangs;
+		
 		private EntityRef<LoaiSanPham> _LoaiSanPham;
 		
 		private EntityRef<NhanSanXuat> _NhanSanXuat;
@@ -2342,6 +2486,7 @@ namespace SadiShop.Models
 		
 		public SanPham()
 		{
+			this._ChiTietDonDatHangs = new EntitySet<ChiTietDonDatHang>(new Action<ChiTietDonDatHang>(this.attach_ChiTietDonDatHangs), new Action<ChiTietDonDatHang>(this.detach_ChiTietDonDatHangs));
 			this._LoaiSanPham = default(EntityRef<LoaiSanPham>);
 			this._NhanSanXuat = default(EntityRef<NhanSanXuat>);
 			OnCreated();
@@ -2555,6 +2700,19 @@ namespace SadiShop.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SanPham_ChiTietDonDatHang", Storage="_ChiTietDonDatHangs", ThisKey="MaSanPham", OtherKey="MaSanPham")]
+		public EntitySet<ChiTietDonDatHang> ChiTietDonDatHangs
+		{
+			get
+			{
+				return this._ChiTietDonDatHangs;
+			}
+			set
+			{
+				this._ChiTietDonDatHangs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoaiSanPham_SanPham", Storage="_LoaiSanPham", ThisKey="MaLoai", OtherKey="MaLoai", IsForeignKey=true)]
 		public LoaiSanPham LoaiSanPham
 		{
@@ -2619,6 +2777,104 @@ namespace SadiShop.Models
 						this._MaNhaSanXuat = default(string);
 					}
 					this.SendPropertyChanged("NhanSanXuat");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ChiTietDonDatHangs(ChiTietDonDatHang entity)
+		{
+			this.SendPropertyChanging();
+			entity.SanPham = this;
+		}
+		
+		private void detach_ChiTietDonDatHangs(ChiTietDonDatHang entity)
+		{
+			this.SendPropertyChanging();
+			entity.SanPham = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Size")]
+	public partial class Size : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _MaSize;
+		
+		private string _TenSize;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaSizeChanging(string value);
+    partial void OnMaSizeChanged();
+    partial void OnTenSizeChanging(string value);
+    partial void OnTenSizeChanged();
+    #endregion
+		
+		public Size()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaSize", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string MaSize
+		{
+			get
+			{
+				return this._MaSize;
+			}
+			set
+			{
+				if ((this._MaSize != value))
+				{
+					this.OnMaSizeChanging(value);
+					this.SendPropertyChanging();
+					this._MaSize = value;
+					this.SendPropertyChanged("MaSize");
+					this.OnMaSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenSize", DbType="VarChar(50)")]
+		public string TenSize
+		{
+			get
+			{
+				return this._TenSize;
+			}
+			set
+			{
+				if ((this._TenSize != value))
+				{
+					this.OnTenSizeChanging(value);
+					this.SendPropertyChanging();
+					this._TenSize = value;
+					this.SendPropertyChanged("TenSize");
+					this.OnTenSizeChanged();
 				}
 			}
 		}
