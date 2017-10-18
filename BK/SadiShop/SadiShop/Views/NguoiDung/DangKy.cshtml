@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<!-- MY ACCOUNT PAGE -->
+<section class="my_account parallax img_res">
+
+    <!-- CONTAINER -->
+    <div class="container">
+
+        <div class=" clearfix">
+            <div class="login" style="background-color: #fff; margin-bottom: 54px;margin-left: 200px;margin-right: 200px;">
+                <h2 style="text-align: center;padding-top: 20px;">ĐĂNG KÝ TÀI KHOẢN</h2>
+                <div class="login_form" action="javascript:void(0);"  style=" width: 50%; margin: auto;padding-bottom: 20px;">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true)
+                        @ViewData["Error1"]
+                        @Html.TextBox("username", "", new { placeholder = "Tên đăng nhập" })
+                        @ViewData["Error2"]
+                        @Html.TextBox("password", "", new { placeholder = "Mật khẩu", @style = "-webkit-text-security: square;" })
+                        @ViewData["Error3"]
+                        @Html.TextBox("repassword", "", new { placeholder = "Nhập lại mật khẩu", @style = "-webkit-text-security: square;" })
+                        @ViewData["Error4"]
+                        @Html.TextBox("fullname", "", new { placeholder = "Họ và tên" })
+                        @ViewData["Error5"]
+                        @Html.TextBox("email", "", new { placeholder = "Email" })
+                        @ViewData["Error6"]
+                        @Html.TextBox("telephone", "", new { placeholder = "Số điện thoại" })
+                        <div class="center"><input type="submit" value="Đăng ký" /></div>
+                     }
+                </div>   
+
+            </div>
+            
+        </div>
+
+        <div class="my_account_note center">Bạn cần hỗ trợ? <b>(+84) 1205 070 996</b></div>
+    </div><!-- //CONTAINER -->
+</section><!-- //MY ACCOUNT PAGE -->
+
