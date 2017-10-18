@@ -177,7 +177,10 @@ namespace SadiShop.Controllers
                     }
                 }
                 sp1.TenSanPham = sp.TenSanPham;
-               // UpdateModel(sp1);
+                sp1.MaNhaSanXuat = sp.MaNhaSanXuat;
+                sp1.MaLoai = sp.MaLoai;
+                sp1.Thongtin = sp.Thongtin;
+                sp1.GiaBan = sp.GiaBan;
                 data.SubmitChanges();
             }
             return RedirectToAction("SanPham");
@@ -243,6 +246,38 @@ namespace SadiShop.Controllers
             data.SubmitChanges();
             return RedirectToAction("LoaiSanPham");
         }
+
+        [HttpGet]
+        public ActionResult SuaLoaiSanPham(string id)
+        {
+            LoaiSanPham sp = data.LoaiSanPhams.SingleOrDefault(n => n.MaLoai == id);
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(sp);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SuaLoaiSanPham(LoaiSanPham sp)
+        {
+
+            if (ModelState.IsValid)
+            {
+                LoaiSanPham sp1 = data.LoaiSanPhams.SingleOrDefault(n => n.MaLoai == sp.MaLoai);
+                if (sp1 == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                sp1.TenLoai = sp.TenLoai;
+                sp1.MaLoaiCha = sp.MaLoaiCha;
+                data.SubmitChanges();
+            }
+            return RedirectToAction("LoaiSanPham");
+        }
         //----------------------------------------------NHA SAN XUAT----------------------------------------------
         public ActionResult NhaSanXuat()
         {
@@ -301,6 +336,38 @@ namespace SadiShop.Controllers
             }
             data.NhanSanXuats.DeleteOnSubmit(sp);
             data.SubmitChanges();
+            return RedirectToAction("NhaSanXuat");
+        }
+
+        [HttpGet]
+        public ActionResult SuaNhaSanXuat(string id)
+        {
+            NhanSanXuat sp = data.NhanSanXuats.SingleOrDefault(n => n.MaNhaSanXuat == id);
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(sp);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SuaNhaSanXuat(NhanSanXuat sp)
+        {
+
+            if (ModelState.IsValid)
+            {
+                NhanSanXuat sp1 = data.NhanSanXuats.SingleOrDefault(n => n.MaNhaSanXuat == sp.MaNhaSanXuat);
+                if (sp1 == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                sp1.TenNhaSanXuat = sp.TenNhaSanXuat;
+                sp1.QuocGia = sp.QuocGia;
+                data.SubmitChanges();
+            }
             return RedirectToAction("NhaSanXuat");
         }
         //----------------------------------------------DON HANG--------------------------------------------------
