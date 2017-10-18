@@ -224,5 +224,30 @@ namespace SadiShop.Controllers
         {
             return View(data.DonDatHangs.Where(n => n.MaTaiKhoan == User.Identity.GetUserId()).ToList());
         }
+
+        public ActionResult ChiTietDonHang(int id)
+        {
+            var sp = data.ChiTietDonDatHangs.Where(n => n.MaDonDatHang == id).ToList();
+            //ViewBag.MaSanPham = sp.MaSanPham;
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(sp);
+        }
+
+        public ActionResult HuyDonHang(int id)
+        {
+            DonDatHang ddh = data.DonDatHangs.SingleOrDefault(n => n.MaDonDatHang == id);
+            if (ddh == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            ddh.MaTinhTrang = 4;
+            data.SubmitChanges();
+            return RedirectToAction("LichSuDonHang", "GioHang");
+        }
     }
 }

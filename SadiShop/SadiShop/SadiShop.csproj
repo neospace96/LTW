@@ -1069,6 +1069,7 @@
     <Content Include="Content\fancySelect.css" />
     <Content Include="Content\flexslider.css" />
     <Content Include="Content\flipclock.css" />
+    <Content Include="Content\font-awesome.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\styleadmin.css" />
@@ -2391,7 +2392,6 @@
     <Content Include="Views\Admin\XoaNhaSanXuat.cshtml" />
     <Content Include="Views\Manage\ThongTinKhachHang.cshtml" />
     <Content Include="Views\GioHang\XacNhanDonHang.cshtml" />
-    <Content Include="Views\Admin\QuanLyDonHangChuaDuyet.cshtml" />
     <Content Include="Views\Admin\QuanLyDonHangChuaDyet.cshtml" />
     <Content Include="Views\Admin\QuanLyDonHangDaDyet.cshtml" />
     <Content Include="Views\Admin\ChiTietDonHang.cshtml" />
@@ -2406,6 +2406,7 @@
     <Content Include="Views\GioHang\ThongTinKhachHang.cshtml" />
     <Content Include="Views\GioHang\ThongTinGioHang.cshtml" />
     <Content Include="Views\GioHang\LichSuDonHang.cshtml" />
+    <Content Include="Views\GioHang\ChiTietDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

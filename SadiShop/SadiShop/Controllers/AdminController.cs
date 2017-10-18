@@ -161,7 +161,7 @@ namespace SadiShop.Controllers
                     Response.StatusCode = 404;
                     return null;
                 }
-                if (fileUpload != null)
+                 if (fileUpload != null)
                 {
                     var fileName = Path.GetFileName(fileUpload.FileName);
                     var path = Path.Combine(Server.MapPath("~/images/hinhsanpham/"), fileName);
@@ -173,10 +173,11 @@ namespace SadiShop.Controllers
                     {
                         fileUpload.SaveAs(path);
                         sp1.Hinh1 = fileName;
+                       // data.SubmitChanges();
                     }
                 }
                 sp1.TenSanPham = sp.TenSanPham;
-                UpdateModel(sp1);
+               // UpdateModel(sp1);
                 data.SubmitChanges();
             }
             return RedirectToAction("SanPham");

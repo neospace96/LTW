@@ -2433,7 +2433,7 @@ namespace SadiShop.Models
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private string _MaSanPham;
-		
+
 		private string _TenSanPham;
 		
 		private string _MaNhaSanXuat;
@@ -2493,7 +2493,8 @@ namespace SadiShop.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaSanPham", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaSanPham
+        [Display(Name = "Mã sản phẩm")]
+        public string MaSanPham
 		{
 			get
 			{
@@ -2513,6 +2514,7 @@ namespace SadiShop.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenSanPham", DbType="NVarChar(100)")]
+        [Display(Name = "Tên sản phẩm")]
 		public string TenSanPham
 		{
 			get
@@ -2533,7 +2535,8 @@ namespace SadiShop.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNhaSanXuat", DbType="VarChar(50)")]
-		public string MaNhaSanXuat
+        [Display(Name = "Tên nhà sản xuất")]
+        public string MaNhaSanXuat
 		{
 			get
 			{
@@ -2557,7 +2560,8 @@ namespace SadiShop.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLoai", DbType="VarChar(50)")]
-		public string MaLoai
+        [Display(Name = "Loại sản phẩm")]
+        public string MaLoai
 		{
 			get
 			{
@@ -2581,7 +2585,8 @@ namespace SadiShop.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Thongtin", DbType="NVarChar(200)")]
-		public string Thongtin
+        [Display(Name = "Thông tin")]
+        public string Thongtin
 		{
 			get
 			{
@@ -2601,7 +2606,8 @@ namespace SadiShop.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBan", DbType="Float")]
-		public System.Nullable<double> GiaBan
+        [Display(Name = "Giá bán")]
+        public System.Nullable<double> GiaBan
 		{
 			get
 			{
@@ -2621,7 +2627,8 @@ namespace SadiShop.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh1", DbType="VarChar(100)")]
-		public string Hinh1
+        [Display(Name = "Hình sản phẩm")]
+        public string Hinh1
 		{
 			get
 			{

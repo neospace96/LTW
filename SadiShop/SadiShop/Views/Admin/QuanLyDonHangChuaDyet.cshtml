@@ -57,11 +57,11 @@ else
                                     <td>@Html.DisplayFor(modelItem => item.NgayDatHang)</td>
                                     <td>@Html.DisplayFor(modelItem => item.MaDonDatHang)</td>
                                     <td>
-                                        <strong>Họ và tên:</strong> @Html.DisplayFor(modelItem => item.TenNguoiNhan)
+                                        <strong>Họ và tên:</strong> @Html.DisplayFor(modelItem => item.AspNetUser.FullName)
                                         <br />
-                                        <strong>Địa chỉ:</strong> @Html.DisplayFor(modelItem => item.DiaChi)
+                                        <strong>Địa chỉ:</strong> @Html.DisplayFor(modelItem => item.AspNetUser.Address)
                                         <br />
-                                        <strong>Số điện thoại:</strong> @Html.DisplayFor(modelItem => item.DienThoai)
+                                        <strong>Số điện thoại:</strong> @Html.DisplayFor(modelItem => item.AspNetUser.PhoneNumber)
                                     </td>
                                     <td>@String.Format("{0:0,0}", item.ThanhTien) VNĐ</td>
                                     <td>@Html.ActionLink("Chưa xử lý", "DaDuyet", new { @MaDonDatHang = item.MaDonDatHang})</td>

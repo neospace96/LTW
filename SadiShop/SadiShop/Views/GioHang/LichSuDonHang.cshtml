@@ -9,8 +9,8 @@
     <div id="page">
         <!-- BREADCRUMBS -->
         <section class="breadcrumb parallax margbot30"></section>
-        <h2 class="center">LỊCH SỬ ĐƠN HÀNG</h2>
-        <table class="table table-hover" style="margin-left:20px;margin-right:20px">
+        <h1 class="center">LỊCH SỬ ĐƠN HÀNG</h1>
+        <table class="table table-hover" style="margin-left:20px;margin-right:20px; font-size: 16px">
             <tr>
                 <th>
                     Ngày đặt
@@ -19,14 +19,14 @@
                     Thành Tiền
                 </th>
                 <th>
-                    Tình trạng
+                    Tình trạng đơn hàng
                 </th>
                 <th>Tùy chọn</th>
             </tr>
 
             @foreach (var item in Model)
             {
-                <tr>
+                <tr style="font-size: 16px">
                     <td>
                         @Html.DisplayFor(modelItem => item.NgayDatHang)
                     </td>
@@ -37,8 +37,13 @@
                         @Html.DisplayFor(modelItem => item.TinhTrang.TenTinhTrang)
                     </td>
                     <td>
-                    Chi Tiết
-                    | Hủy đơn hàng</td>
+                    @*<a href="@Url.Action("ChiTietDonHang", "GioHang", new { id = item.MaDonDatHang })">Chi tiết</a>*@
+                    @Html.ActionLink("Chi tiết đơn hàng", "ChiTietDonHang", new {id = item.MaDonDatHang }) | 
+                        @if (item.MaTinhTrang == 1)
+                        {
+                           @Html.ActionLink("Hủy đơn hàng", "HuyDonHang", new { id = item.MaDonDatHang })
+                        }
+                    </td>
                 </tr>
             }
 
