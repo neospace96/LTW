@@ -34,14 +34,30 @@
                         @String.Format("{0:0,0}", item.ThanhTien) VNĐ
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.TinhTrang.TenTinhTrang)
+                        @if (item.MaTinhTrang == 1)
+                        {
+                            <span class="btn-info" style="padding:5px">@Html.DisplayFor(modelItem => item.TinhTrang.TenTinhTrang)</span> 
+                        }
+                        @if (item.MaTinhTrang == 2)
+                        {
+                            <span class="btn-primary" style="padding:5px">@Html.DisplayFor(modelItem => item.TinhTrang.TenTinhTrang)</span>
+                        }
+                        @if (item.MaTinhTrang == 3)
+                        {
+                            <span class="btn-success" style="padding:5px">@Html.DisplayFor(modelItem => item.TinhTrang.TenTinhTrang)</span>
+                        }
+                        @if (item.MaTinhTrang == 4)
+                        {
+                            <span class="btn-danger" style="padding:5px">@Html.DisplayFor(modelItem => item.TinhTrang.TenTinhTrang)</span>
+                        }
+                        
                     </td>
                     <td>
                     @*<a href="@Url.Action("ChiTietDonHang", "GioHang", new { id = item.MaDonDatHang })">Chi tiết</a>*@
-                    @Html.ActionLink("Chi tiết đơn hàng", "ChiTietDonHang", new {id = item.MaDonDatHang }) | 
+                    <button class="btn-default" style="padding:5px">@Html.ActionLink("Chi tiết đơn hàng", "ChiTietDonHang", new {id = item.MaDonDatHang })</button> | 
                         @if (item.MaTinhTrang == 1)
                         {
-                           @Html.ActionLink("Hủy đơn hàng", "HuyDonHang", new { id = item.MaDonDatHang })
+                           <button class="btn-warning" style="padding:5px">@Html.ActionLink("Hủy đơn hàng", "HuyDonHang", new { id = item.MaDonDatHang })</button> 
                         }
                     </td>
                 </tr>
