@@ -33,11 +33,28 @@
                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Đăng nhập" class="btn btn-default" />
-                            </div>
+                        @*<div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <div class="checkbox">
+                                        @Html.CheckBoxFor(m => m.RememberMe)
+                                        @Html.LabelFor(m => m.RememberMe)
+                                    </div>
+                                </div>
+                            </div>*@
+                    <div class="pull-right"><a class="forgot_pass" href="@Url.Action("ForgotPassword", "Account")">Quên mật khẩu?</a></div>
+                        <div class="pull-right">
+                            <input type="checkbox" id="categorymanufacturer1">
+                            <label for="categorymanufacturer1" style="margin-left:10px;">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                Ghi nhớ |   
+                            </label>
                         </div>
+                        
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Đăng nhập" class="btn btn-default" />
+                        </div>
+                    </div>
                     }
                 </div>
             </div>
