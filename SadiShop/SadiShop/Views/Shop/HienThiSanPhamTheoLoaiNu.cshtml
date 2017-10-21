@@ -93,7 +93,7 @@
                                             </div>
                                         </div>
                                         <div class="tovar_description clearfix">
-                                            <a class="tovar_title" href="product-page.html">@sanpham.TenSanPham</a>
+                                            <a class="tovar_title" href="@Url.Action("ChiTiet", "Shop", new { id = sanpham.MaSanPham })">@sanpham.TenSanPham</a>
                                             <span class="tovar_price">@String.Format("{0:0,0}", sanpham.GiaBan) VNĐ</span>
                                         </div>
                                         <div class="tovar_content">Thông tin: @sanpham.Thongtin</div>
