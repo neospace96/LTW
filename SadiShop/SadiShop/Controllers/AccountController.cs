@@ -457,7 +457,7 @@ namespace SadiShop.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Shop");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
